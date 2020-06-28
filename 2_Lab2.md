@@ -126,15 +126,15 @@ user:~/environment/WebAppRepo/ $ git push -u origin master
 
 ### Stage 4: 애플리케이션 재배포
 
-1. Run the **_start-build_** command:
+1. **_start-build_** 명령어를 실행합니다:
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name devops-webapp-project
+user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name user@@-devops-webapp-project
 ```
 
-2. Visit the CodeBuild Console to ensure build is successful. Upon successful completion of build, we should see new **_WebAppOutputArtifact.zip_** upload to the configured CodeBuild S3 Bucket.
+2. 빌드가 성공했는지 확인하려면 CodeBuild 콘솔을 방문하십시오. 빌드가 성공적으로 완료되면 새로 생성된 **_WebAppOutputArtifact.zip_** 파일이 S3 Bucket 에 업로드 된 것을 확인할 수 있습니다.
 
-3. Get the **_eTag_** for the object **WebAppOutputArtifact.zip** uploaded to S3 bucket. You can get etag by visiting S3 console. Or, executing the following command.
+3. S3 버킷에 업로드된 **WebAppOutputArtifact.zip** 파일의 **_eTag_** 를 확인하세요. etag는 S3 서비스에서 해당 파일을 클릭하면 확인할 수 있습니다. 혹은 아래 명령어로도 확인이 가능합니다.
 
 ```console
 user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
@@ -143,11 +143,11 @@ user:~/environment/WebAppRepo (master) $ aws s3api head-object --bucket <<REPLAC
 
 ```
 
-As a sample S3 properties console showing etag below:
+etag 확인 샘플:
 
 ![etag](./img/etag.png)
 
-4. Run the following to create a deployment. **_Replace_** <<REPLACE-YOUR-S3-OUTPUT-BUCKET-NAME>> with your **_S3 bucket name_** created in Lab 1. Also, update the **_eTag_** based on previous step.
+4. 아래 명령어를 통해 배포를 실행합니다. <<REPLACE-YOUR-S3-OUTPUT-BUCKET-NAME>> 부분을 Lab1에서 생성한 **_S3 버킷 이름_** 으로 변경합니다.  <<REPLACE-YOUR-ETAG-VALUE>> 부분도 앞에서 생성한 파일의 **_eTag_** 값도 변경합니다.
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws deploy create-deployment --application-name DevOps-WebApp \
@@ -156,22 +156,22 @@ user:~/environment/WebAppRepo (master) $ aws deploy create-deployment --applicat
 --s3-location bucket=<<REPLACE-YOUR-S3-OUTPUT-BUCKET-NAME>>,key=WebAppOutputArtifact.zip,bundleType=zip,eTag=<<REPLACE-YOUR-ETAG-VALUE>>
 ```
 
-5. **Confirm** via IAM Roles, if associated EC2 instance has appropriate permissions to read from bucket specified above. If not, you will get Access Denied at the DownloadBundle step during deployment.
+5. 연결된 EC2 인스턴스에 위에서 지정한 버킷에서 읽을 수있는 적절한 IAM 권한이있는 경우 승인이 됩니다.그렇지 않은 경우 배포 중에 DownloadBundle 단계에서 액세스가 거부됩니다.
 
-6. **Verify** the deployment status by visiting the **CodeDeploy console**.
+6. AWS 관리 콘솔에서 **CodeDeploy console* 에서 배포 상태를 확인합니다.
 
 ![deployment-success](./img/Lab2-CodeDeploy-deploymentSuccess.png)
 
-7. Check the deploy console for status. if the deployment failed, then look at the error message and correct the deployment issue.
+7. 배포 콘솔의 상태를 확인하십시오. 배포에 실패한 경우 오류 메시지를보고 배포 문제를 해결하십시오.
 
-8. if the status of deployment is success, we should be able to view the web application deployed successfully to the EC2 server namely **_DevWebApp01_**
+8. 배포 상태가 성공하면  **_DevWebApp01_** EC2 서버에 성공적으로 배포 된 웹 응용 프로그램을 볼 수 있어야합니다.
 
-9. Go to the **EC2 Console**, get the **public DNS name** of the server and open the url in a browser. You should see a sample web application.
+9. 제대로 배포되었는지는 DevWebApp01 인스턴스의 **public DNS name** 을 웹브라우저를 통해 확인해 볼 수 있습니다.
 
 ![webpage](./img/webpage-success.png)
 
 ### Summary
 
-This **concludes Lab 2**. In this lab, we successfully created CodeDeploy application and deployment group. We also modified buildspec.yml to include additional components needed for deployment. We also successfully completed deployment of application to test server.You can now move to the next Lab,
+This **concludes Lab 2**.  이 Lab에서는 CodeDeploy 응용 프로그램 및 배포 그룹을 성공적으로 만들었습니다. 또한 배포에 필요한 추가 구성 요소를 포함하도록 buildspec.yml을 수정했습니다. 또한 테스트 서버에 응용 프로그램을 성공적으로 배포했습니다. 이제 다음 실습으로 이동할 수 있습니다.
 
 [Lab 3 - Setup CI/CD using AWS CodePipeline](3_Lab3.md)

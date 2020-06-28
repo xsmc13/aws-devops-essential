@@ -43,9 +43,9 @@ Cloud9의 열린 스크래치 패드 또는 로컬 컴퓨터의 메모장에 메
 
 **_AWS CodeCommit 리포지토리 생성  (console)_**
 
-1. Open the AWS CodeCommit console at <https://console.aws.amazon.com/codecommit>.
+1. AWS CodeCommit 콘솔을 열어서 작업을 시작합니다. <https://console.aws.amazon.com/codecommit>.
 
-2. On the Welcome page, choose Get Started Now. (If a **_Dashboard_** page appears instead, choose **_Create repository_**.)
+2. 첫 화면에서 좌측메뉴에서 "Getting Started" 를 선택합니다. (If a **_Dashboard_** page appears instead, choose **_Create repository_**.)
 3. On the **_Create repository_** page, in the **_Repository name_** box, type **_WebAppRepo_**.
 4. In the **_Description_** box, type **_My demonstration repository_**.
 5. Choose **_Create repository_** to create an empty AWS CodeCommit repository named **_WebAppRepo_**.

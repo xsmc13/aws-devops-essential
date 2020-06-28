@@ -130,10 +130,11 @@ Provide your Git HTTPs credential when prompted. Credential helper will store it
    AWS CodeCommit 리포지토리와 동일한 리전에서 시작해야합니다..
    
 참고> 아래 01-aws-devops-workshop-roles.template 파일의 260번 라인에서 S3 Bucket이름에 사용자 명을 추가로 한다.
+
 예) cicd-workshop -> user30-cice-workshop
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-roles \
+user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user@@-DevopsWorkshop-roles \
 --template-body https://s3.amazonaws.com/devops-workshop-0526-2051/v1/01-aws-devops-workshop-roles.template \
 --capabilities CAPABILITY_IAM
 ```
@@ -142,18 +143,18 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 
 2. 완료되면 생성 된 서비스 역할에 대해 기록해 둡니다.. 스텍결과에 대해서 확인하려면 아래 참고합니다 [스택 정보확인](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stacks.html) .
 
-3. For Console, refer to the CloudFormation [Outputs tab](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-view-stack-data-resources.html) to see output. CloudFormation통해서 S3 버킷이 하나 생성되고 여기에 CodeBuild 를 통한 결과 아티펙트 파일들이 저장된다. . **_Sample Output:_** ![](./img/cfn-output.png)
+3. CloudFormation 결과에 대해서는 아래파일 참조 [Outputs tab](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-view-stack-data-resources.html). CloudFormation통해서 S3 버킷이 하나 생성되고 여기에 CodeBuild 를 통한 결과 아티펙트 파일들이 저장된다. . **_Sample Output:_** ![](./img/cfn-output.png)
 
-4. Run the following commands to get the value of Build Role ARN and S3 bucket from cloudformation template launched earlier.
+4. 다음 명령을 실행하여 앞서 실행 한 cloudformation 템플릿에서 Build Role ARN 및 S3 버킷의 값을 가져옵니다.
 
 ```console
 user:~/environment/WebAppRepo (master) $ sudo yum -y install jq
-user:~/environment/WebAppRepo (master) $ echo YOUR-BuildRole-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeBuildRoleArn")|.OutputValue')
-user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-BuildRole-ARN: $(aws cloudformation describe-stacks --stack-name user@@-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeBuildRoleArn")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name user@@-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
 ```
 
-5. Let us **create CodeBuild** project from **CLI**. To create the build project using AWS CLI, we need JSON-formatted input.
-    **_Create_** a json file named **_'create-project.json'_** under 'MyDevEnvironment'. ![](./img/create-json.png) Copy the content below to create-project.json. (Replace the placeholders marked with **_<<>>_** with  values for BuildRole ARN, S3 Output Bucket and region from the previous step.) 
+5. CLI에서 **create CodeBuild** 프로젝트를 생성합니다.  AWS CLI를 사용하여 빌드 프로젝트를 생성하려면 JSON 형식의 입력이 필요합니다.
+ JSON 파일 **_'create-project.json'_** 을 '~/Environment' 폴더에 생성합니다. ![](./img/create-json.png) 아래내용을 create-project.json 파일에 복사해서 넣습니다. ( **_<<>>_** 로 표기된 부분은 본인이 작업 리전, S3버킷 이름, BUILD ARN 등 생성된 값으로 넣어줍니다) 
     
 
 ```json
@@ -178,16 +179,16 @@ user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws 
 }
 ```
     
-  To know more about the codebuild project json [review the spec](http://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html#create-project-cli).
+codebuild 프로젝트 생성을 위한 json 파일에 대해 자세히 알아보려면 아래 파일을 참조합니다. [spec파일 알아보기](http://docs.aws.amazon.com/codebuild/latest/userguide/create-project.html#create-project-cli).
 
 
-6. Switch to the directory that contains the file you just saved, and run the **_create-project_** command:
+6. Cloud9 터미널에서 방금 생성한 파일이 있는 경로로 이동해서 아래 명령어를 실행합니다.
 
 ```console
 user:~/environment $ aws codebuild create-project --cli-input-json file://create-project.json
 ```
 
-7. Sample output JSON for your reference
+7. 결과는 아래와 같이 출력이 됩니다.
 
 ```json
 {

@@ -11,7 +11,8 @@
 ## Prerequisites
 
 * **Configure AWS CodeCommit:**  AWS CodeCommit을 설정하는 가장 쉬운 방법은 AWS CodeCommit에 대한 HTTPS Git 자격 증명을 구성하는 것입니다, 보안 자격 증명 탭을 선택하고 AWS CodeCommit의 HTTPS Git 자격 증명에서 생성을 선택하십시오. ![HTTPS Git Credential](./img/codecommit-iam-gc1.png)
-        **💡 Note:** Git HTTP 자격 증명을 기록해 두십시오. 변경 사항을 복제하여 Repo로 푸시하는 데 사용됩니다.
+
+**💡 Note:** Git HTTP 자격 증명을 기록해 두십시오. 변경 사항을 복제하여 Repo로 푸시하는 데 사용됩니다.
            또한 HTTPS Git 자격 증명을 구성하는 방법에 대한 자세한 지침을 찾을 수 있습니다 [here](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html)
 * **IAM Permissions:** 마지막으로 AWS 계정의 경우 충분한 권한이 있는지 확인하십시오. 다음 서비스에 대한 권한이 있어야합니다:
 

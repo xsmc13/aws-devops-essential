@@ -58,7 +58,7 @@ Cloud9의 열린 스크래치 패드 또는 로컬 컴퓨터의 메모장에 메
 
 이 단계에서는 이전 단계에서 생성 한 소스 리포지토리에 연결합니다. 여기서 Git을 사용하여 빈 AWS CodeCommit 리포지토리의 복사본을 복제하고 초기화합니다. 그런 다음 커밋에 주석을 달 때 사용되는 사용자 이름과 이메일 주소를 지정하십시오.
 
-1. CodeCommit 콘솔에서 **https clone url** 에서 리포지토리 주소를 확인할 수 있습니다.
+1. CodeCommit 콘솔에서 생성한 리포지토리 우측의 **Clone Url** 에 HTTPS를 클릭하면 주소가 복사됩니다.
 2. Cloud9 IDE 터미널로 이동합니다.
 3. 로컬 리포지토리로 복제하기 위해 아래 명령어를 실행합니다:
 
@@ -79,44 +79,44 @@ user:~/environment $ git clone https://git-codecommit.<YOUR-REGION>.amazonaws.co
 user:~/environment $ wget https://s3.amazonaws.com/devops-workshop-0526-2051/v1/Web-App-Archive.zip
 ```
 
-2. 압축파일을 해제하고 폴더 이름을 WebAppRepo로 수정합니다.
+2. 압축파일을 해제하고 Web-App-Archive 폴더 아래 파일을 모두 WebAppRepo로 이동시킵니다.
 
 ```console
 user:~/environment $ unzip Web-App-Archive.zip
 user:~/environment $ mv -v Web-App-Archive/* WebAppRepo/
 ```
 
-After moving the files, your local repo should like the one below. ![cloud9](./img/Cloud9-IDE-Screen-Sample.png)
-3. Change the directory to your local repo folder. Run **_git add_** to stage the change:
+파일을 옮긴 후에는 로컬 리포지토리에서 새로 다운받은 파일을 추가합니다.. ![cloud9](./img/Cloud9-IDE-Screen-Sample.png)
+3. WebAppRepo 디렉토리로 이동한 후 **_git add_** 을 통해 모든 파일을 리포지토리에 추가합니다.
 
 ```console
 user:~/environment $ cd WebAppRepo
 user:~/environment/WebAppRepo/ $ git add *
 ```
 
-4. Run **_git commit_** to commit the change:
+4. **_git commit_** 명령을 실행합니다.
 
 ```console
 user:~/environment/WebAppRepo/ $ git commit -m "Initial Commit"
 ```
 
-**_💡 Tip_** To see details about the commit you just made, run **_git log_**.
+**_💡 Tip_** 커밋 과정을 자세히 보려면 *_git log_** 명령어를 사용합니다.
 
-5. Run **_git config credential_** to store the credential.
+5. **_git config credential_** 를 통해 자격증명을 저장합니다.
 
 ```console
 user:~/environment/WebAppRepo/ $ git config credential.helper store
 ```
 
-6. Run **_git push_** to push your commit through the default remote name Git uses for your AWS CodeCommit repository (origin), from the default branch in your local repo (master):
-
+6. **_git push_** 를 통해 로컬 소스 파일을 AWS CodeCommit 리포지토리에 업로드 합니다 (origin), 
 ```console
 user:~/environment/WebAppRepo/ $ git push -u origin master
 ```
 
 Provide your Git HTTPs credential when prompted. Credential helper will store it, hence you won't be asked again for subsequent push.
 
-**_💡 Tip_** After you have pushed files to your AWS CodeCommit repository, you can use the [AWS CodeCommit console](https://console.aws.amazon.com/codecommit/home) to view the contents.
+**_💡 Tip_** Push한 후에  [AWS CodeCommit console](https://console.aws.amazon.com/codecommit/home) 에서 
+정상적으로 파일들이 업로드 되었는지 확인한다.
 
 ![buildsuccess](./img/Lab1-CodeCommit-Success.png)
 

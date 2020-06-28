@@ -301,22 +301,21 @@ user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-nam
 
 4. 성공하면 데이터가 성공적으로 출력됩니다. 빌드 ID 값을 기록하십시오. 다음 단계에서 필요합니다.
 5. 이 단계에서는 빌드 상태에 대한 요약 된 정보를 볼 수 있습니다.
-
+**_Note:_**  <<ID>> 부분을 출력으로 나온 Build ID값으로 변경하세요.
+   
 ```console
 user:~/environment/WebAppRepo (master) $ aws codebuild batch-get-builds --ids <<ID>>
 ```
 
-**_Note:_** Replace <<ID>> with the id value that appeared in the output of the previous step.
-
-6. You will also be able to view detailed information about your build in CloudWatch Logs. You can complete this step by visiting the [AWS CodeBuild console](https://console.aws.amazon.com/codebuild/home).
+6. CloudWatch Logs에서 빌드에 대한 자세한 정보를 볼 수도 있습니다. 이 단계를 완료하려면 다음 문서를 확인하세요 [AWS CodeBuild console](https://console.aws.amazon.com/codebuild/home).
 ![buildsuccess](./img/Lab1-CodeBuild-Success.png)
 
-7. In this step, you will verify the **_WebAppOutputArtifact.zip_** file that AWS CodeBuild built and then uploaded to the output bucket. You can complete this step by **visiting** the **AWS CodeBuild console** or the **Amazon S3 console**.
+7.이번 과정에서는 빌드 결과로 생성된 **_WebAppOutputArtifact.zip_** 파일을 S3 버킷에 생성됨을 확인할 수 있습니다.
 
-**_Note:_** Troubleshooting CodeBuild - Use the [information](http://docs.aws.amazon.com/codebuild/latest/userguide/troubleshooting.html) to help you identify, diagnose, and address issues.
+**_Note:_** 빌드과정에서의 문제해결을 위해서는 다음 문서를 참조하세요 [빌드 문제해결](http://docs.aws.amazon.com/codebuild/latest/userguide/troubleshooting.html) 
 
-### Summary:
+### 결론:
 
-This **concludes Lab 1**. In this lab, we successfully created repository with version control using AWS CodeCommit and built our code on the cloud using AWS CodeBuild service. You can now move to the next Lab,
+**Lab 1**. 이번 Lab에서는 AWS CodeCommit을 사용하여 버전 제어가 포함된 리포지토리를 성공적으로 생성하고 AWS CodeBuild 서비스를 사용하여 클라우드에서 코드를 빌드하였습니다. 이제 다음 실습으로 넘어가도록 하겠습니다.
 
 [Lab 2 - Automate deployment for testing](2_Lab2.md)

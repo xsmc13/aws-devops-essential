@@ -47,7 +47,7 @@ Cloud9의 열린 스크래치 패드 또는 로컬 컴퓨터의 메모장에 메
 
 2. 첫 화면에서 좌측메뉴에서 "Getting Started" 를 선택합니다. (If a **_Dashboard_** page appears instead, choose **_Create repository_**.)
 3. **_Create repository_** 페이지에서, **_Repository name_** 박스에,  **_user@@-WebAppRepo_** 를 입력합니다.
-4. **_Description_** 박스에, **_user@@데모_**라고 적습니다.
+4. **_Description_** 박스에, **_user@@데모_** 라고 적습니다.
 5. **_Create_** 를 클릭하고 **_user@@-WebAppRepo_** 리포지토리를 생성합니다.
 
 **_Note_** The remaining steps in this tutorial assume you have named your AWS CodeCommit repository **_WebAppRepo_**. If you use a name other than **_WebAppRepo_**, be sure to use it throughout this tutorial. For more information about creating repositories, including how to create a repository from the terminal or command line, see [Create a Repository](http://docs.aws.amazon.com/codecommit/latest/userguide/how-to-create-repository.html).

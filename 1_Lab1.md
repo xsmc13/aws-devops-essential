@@ -4,16 +4,16 @@
 
 AWS Cloud9는 브라우저만으로 코드를 작성, 실행 및 디버깅 할 수있는 클라우드 기반 통합 개발 환경 (IDE)입니다. 코드 편집기, 디버거 및 터미널이 포함되어 있습니다. Cloud9에는 널리 사용되는 프로그래밍 언어 및 AWS Command Line Interface (CLI)에 대한 필수 도구가 사전 패키지로 제공되므로이 워크샵을 위해 파일을 설치하거나 랩톱을 구성 할 필요가 없습니다. Cloud9 환경은 AWS Management Console에 로그인 한 사용자와 동일한 AWS 리소스에 액세스 할 수 있습니다.
 
-Take a moment now and setup your Cloud9 development environment.
+통합 개발 환경은 "Seoul(ap-northeast-2)`로 선택합니다.
 
-### ✅  Step-by-step Instructions
+### ✅ Cloud9 생성 순서
 
 1. ASW 관리 콘솔에서, **Services(서비스)** 를 클릭하고 개발도구(Developer Tools) 아래 **Cloud9** 을 선택합니다.
-2. **Create environment** 을 .
-3. Enter `MyDevEnvironment` into **Name** and optionally provide a **Description**.
-4. Click **Next step**.
-5. You may leave **Environment settings** at their defaults of launching a new **t2.micro** EC2 instance which will be paused after **30 minutes** of inactivity.
-6. Click **Next step**.
+2. **Create environment** 을 선택합니다.
+3. Cloud9 생성할 개발 환경이름을 `user**-MyDevEnvironment` 로 선택합니다.
+4. **Next step** 을 선택합니다.
+5. 인스턴스 크기는 **t2.micro** 로 하고,  **30 분** 간 사용하지 않을 때 인스턴스를 종료하도록 설정합니다.
+6. **Next step** 을 선택합니다.
 7. Review the environment settings and click **Create environment**. It will take several minutes for your environment to be provisioned and prepared.
 8. Once ready, your IDE will open to a welcome screen. Below that, you should see a terminal prompt similar to: ![setup](./img/setup-cloud9-terminal.png) You can run AWS CLI commands in here just like you would on your local computer. Verify that your user is logged in by running the following command.
 

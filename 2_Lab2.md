@@ -1,9 +1,9 @@
 
-## Lab 2 - Automate deployment for testing
+## Lab 2 - 테스트를 위한 자동 배포
 
-### Stage 1: Prepare environment for Testing
+### Stage 1: 테스트를 위한 환경 설정
 
-1. Run the CloudFormation stack using the following AWS CLI command:
+1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-Env \
@@ -12,7 +12,7 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 ```
 
 **_Note_**
-  - The Stack will have a VPC w/ 1 public subnet, an IGW, route tables, ACL, 2 EC2 instances. Also, the EC2 instances will be launched with a User Data script to **automatically install the AWS CodeDeploy agent**.
+  - 위 스택을 통해 VPC1개, 1개의 서브넷, 라우팅 테이블, 인터넷 게이트웨이, 두개의 EC2 인스턴스가 생성됩니다.Also, the EC2 instances will be launched with a User Data script to **automatically install the AWS CodeDeploy agent**.
 
   - You can refer to [this instruction](http://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) to install the CodeDeploy agent for other OSs like Amazon Linux, RHEL, Ubuntu, or Windows.
  

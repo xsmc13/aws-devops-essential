@@ -142,7 +142,7 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 
 2. 완료되면 생성 된 서비스 역할에 대해 기록해 둡니다.. 스텍결과에 대해서 확인하려면 아래 참고합니다 [스택 정보확인](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stacks.html) .
 
-3. For Console, refer to the CloudFormation [Outputs tab](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-view-stack-data-resources.html) to see output. A S3 Bucket is also created. Make a note of this bucket. This will be used to store the output from CodeBuild in the next step. **_Sample Output:_** ![](./img/cfn-output.png)
+3. For Console, refer to the CloudFormation [Outputs tab](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-view-stack-data-resources.html) to see output. CloudFormation통해서 S3 버킷이 하나 생성되고 여기에 CodeBuild 를 통한 결과 아티펙트 파일들이 저장된다. . **_Sample Output:_** ![](./img/cfn-output.png)
 
 4. Run the following commands to get the value of Build Role ARN and S3 bucket from cloudformation template launched earlier.
 

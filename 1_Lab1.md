@@ -240,19 +240,19 @@ user:~/environment $ aws codebuild create-project --cli-input-json file://create
 }
 ```
 
-8. If successful, output JSON should have values such as:
-  * The lastModified value represents the time, in Unix time format, when information about the build project was last changed.
-  * The created value represents the time, in Unix time format, when the build project was created.
-  * The ARN value represents the ARN of the build project.
+8. 프로젝트가제대로생성되었다면, 결과로 출력된 JSON 파일에서 아래 내용을 확인할 수 있습니다:
+  * lastModified 값은 빌드 프로젝트에 대한 정보가 마지막으로 변경된 시간을 Unix 시간 형식으로 나타냅니다.
+  * 작성된 값은 빌드 프로젝트가 작성된 시간을 Unix 시간 형식으로 나타냅니다.
+  * ARN 값은 빌드 프로젝트의 ARN을 나타냅니다.
 
-**_Note_** Except for the build project name, you can change any of the build project's settings later. For more information, see [Change a Build Project's Settings (AWS CLI)](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-cli).
+**_Note_** 빌드 프로젝트 이름을 제외하고 나중에 빌드 프로젝트의 설정을 변경할 수 있습니다. 자세한 내용은 아래 내용 참고하세요 [Change a Build Project's Settings (AWS CLI)](http://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-cli).
 
 ***
 
-### Stage 5: Let's build the code on cloud
+### Stage 5: 클라우드에서 코드 빌드하기
 
-1. A build spec is a collection of build commands and related settings in YAML format, that AWS CodeBuild uses to run a build.
-    Create a file namely, **_buildspec.yml_** under **WebAppRepo** folder. Copy the content below to the file and **save** it. To know more about [how CodeBuild works](http://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html#concepts-how-it-works).
+1. 빌드 사양(Build Spec)은 AWS CodeBuild가 빌드를 실행하는 데 사용하는 빌드 명령 및 YAML 형식의 관련 설정 모음입니다.
+    **_buildspec.yml_** 파일을 **user@@-WebAppRepo** 폴더 아래에 생성합니다. 아래 내용을 복사해서 붙여넣고 저장합니다. CodeBilde에 대해서 더 알기원하면 아래 파일 참고합니다 [CodeBuild 동작원리](http://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html#concepts-how-it-works).
 
 ```yaml
 version: 0.1
@@ -277,13 +277,13 @@ artifacts:
   discard-paths: no
 ```
 
-As a sample shown below:
+결과 샘플:
 
 ![buildspec](./img/build-spec.png)
 
-**_Note_** Visit this [page](http://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) to know more about build spec and how you can use multiple build specs in the same repo.
+**_Note_** 하나의 리포지토리에서 복수의 Build Spec 파일을 관리하기 원하면 아래파일을 참조합니다. [page](http://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html) 
 
-2. Commit & push the build specification file to repository
+2. 리포지토리에 buildspec파일 업로드
 ```console
 user:~/environment/WebAppRepo/ $ git add buildspec.yml
 user:~/environment/WebAppRepo/ $ git commit -m "adding buildspec.yml"
@@ -291,16 +291,16 @@ user:~/environment/WebAppRepo/ $ git push -u origin master
 
 ```
 
-3. Run the **_start-build_** command:
+3. **_start-build_** 명령어 실행:
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name devops-webapp-project
+user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name user@@-devops-webapp-project
 ```
 
-**_Note:_** You can start build with more advance configuration setting via JSON. If you are interested to learn more about it, please visit [here](http://docs.aws.amazon.com/codebuild/latest/userguide/run-build.html#run-build-cli).
+**_Note:_** JSON을 통해 더 고급 구성 설정으로 빌드를 시작할 수 있습니다. 그것에 대해 더 자세히 알고 싶다면 다음 사이트를 방문하십시오. [here](http://docs.aws.amazon.com/codebuild/latest/userguide/run-build.html#run-build-cli).
 
-4. If successful, data would appear showing successful submission. Make a note of the build id value. You will need it in the next step.
-5. In this step, you will view summarized information about the status of your build.
+4. 성공하면 데이터가 성공적으로 출력됩니다. 빌드 ID 값을 기록하십시오. 다음 단계에서 필요합니다.
+5. 이 단계에서는 빌드 상태에 대한 요약 된 정보를 볼 수 있습니다.
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws codebuild batch-get-builds --ids <<ID>>

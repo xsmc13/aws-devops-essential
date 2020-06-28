@@ -50,36 +50,36 @@ Cloud9의 열린 스크래치 패드 또는 로컬 컴퓨터의 메모장에 메
 4. **_Description_** 박스에, **_user@@데모 리포지토리_** 라고 적습니다.
 5. **_Create_** 를 클릭하고 **_user@@-WebAppRepo_** 리포지토리를 생성합니다.
 
-**_Note_** The remaining steps in this tutorial assume you have named your AWS CodeCommit repository **_WebAppRepo_**. If you use a name other than **_WebAppRepo_**, be sure to use it throughout this tutorial. For more information about creating repositories, including how to create a repository from the terminal or command line, see [Create a Repository](http://docs.aws.amazon.com/codecommit/latest/userguide/how-to-create-repository.html).
+**_Note_** 이 자습서의 나머지 단계에서는 AWS CodeCommit 리포지토리의 이름을 **_user@@-WebAppRepo_** 로 지정했다고 가정합니다. 별도로 리포지토리를 만드는 경우 아래 문서 참조 [리포지토리 만들기](http://docs.aws.amazon.com/codecommit/latest/userguide/how-to-create-repository.html).
 
 ***
 
-### Stage 2: Clone the Repo
+### Stage 2: 리포지토리 복제하기
 
-In this step, you will connect to the source repository created in the previous step. Here, you use Git to clone and initialize a copy of your empty AWS CodeCommit repository. Then you specify the user name and email address used to annotate your commits.
+이 단계에서는 이전 단계에서 생성 한 소스 리포지토리에 연결합니다. 여기서 Git을 사용하여 빈 AWS CodeCommit 리포지토리의 복사본을 복제하고 초기화합니다. 그런 다음 커밋에 주석을 달 때 사용되는 사용자 이름과 이메일 주소를 지정하십시오.
 
-1. From CodeCommit Console, you can get the **https clone url** link for your repo.
-2. Go to Cloud9 IDE terminal prompt
-3. Run git clone to pull down a copy of the repository into the local repo:
+1. CodeCommit 콘솔에서 **https clone url** 에서 리포지토리 주소를 확인할 수 있습니다.
+2. Cloud9 IDE 터미널로 이동합니다.
+3. 로컬 리포지토리로 복제하기 위해 아래 명령어를 실행합니다:
 
 ```console
 user:~/environment $ git clone https://git-codecommit.<YOUR-REGION>.amazonaws.com/v1/repos/WebAppRepo
 
 ```
 
-Provide your Git HTTPs credential when prompted. You would be seeing the following message if cloning is successful. ***warning: You appear to have cloned an empty repository.***
+메시지가 표시되면 Git HTTP 자격 증명을 제공하십시오. 복제가 성공하면 다음 메시지가 표시됩니다. ***주의:빈 저장소를 복제하였기 때문에 파일은 없습니다.***
 
 ***
 
 ### Stage 3: Commit changes to Remote Repo
 
-1. Download the Sample Web App Archive by running the following command from IDE terminal.
+1. IDE 터미널에서 다음 명령을 실행하여 샘플 소스코드를 다운로드하십시오..
 
 ```console
 user:~/environment $ wget https://s3.amazonaws.com/devops-workshop-0526-2051/v1/Web-App-Archive.zip
 ```
 
-2. Unarchive and copy all the **_contents_** of the unarchived folder to your local repo folder.
+2. 압축파일을 해제하고 폴더 이름을 WebAppRepo로 수정합니다.
 
 ```console
 user:~/environment $ unzip Web-App-Archive.zip

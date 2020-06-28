@@ -14,7 +14,8 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 **_Note_**
   - 위 스택을 통해 VPC1개, 1개의 서브넷, 라우팅 테이블, 인터넷 게이트웨이, 두개의 EC2 인스턴스가 생성됩니다. EC2 인스턴스는 AWS CodeDeploy agent를 User Data 통해서 설치하게 됩니다.
 
-  - Amazon Linux, RHEL, Ubuntu나 윈도우에서 CodeDeploy 에이전트를 설치하려면 다음 문서를 참조 바랍니다. [Codedeploy 에이전트 설치 참고 문서](http://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) 
+  - Amazon Linux, RHEL, Ubuntu나 윈도우에서 CodeDeploy 에이전트를 설치하려면 다음 문서를 참조 바랍니다. 
+  [Codedeploy 에이전트 설치 참고 문서](http://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) 
  
 ***
 

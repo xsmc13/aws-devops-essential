@@ -11,9 +11,9 @@
 ## Prerequisites
 
 * **Configure AWS CodeCommit:**  AWS CodeCommit을 설정하는 가장 쉬운 방법은 AWS CodeCommit에 대한 HTTPS Git 자격 증명을 구성하는 것입니다, 보안 자격 증명 탭을 선택하고 AWS CodeCommit의 HTTPS Git 자격 증명에서 생성을 선택하십시오. ![HTTPS Git Credential](./img/codecommit-iam-gc1.png)
-        **💡 Note:** Make Note of the Git HTTP credentials handy. It will be used for cloning and pushing changes to Repo.
-          Also, You can find detail instruction on how to configure HTTPS Git Credential [here](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html)
-* **IAM Permissions:** Finally, for the AWS account ensure you have sufficient privileges. You must have permissions for the following services:
+        **💡 Note:** Git HTTP 자격 증명을 기록해 두십시오. 변경 사항을 복제하여 Repo로 푸시하는 데 사용됩니다.
+           또한 HTTPS Git 자격 증명을 구성하는 방법에 대한 자세한 지침을 찾을 수 있습니다 [here](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html)
+* **IAM Permissions:** 마지막으로 AWS 계정의 경우 충분한 권한이 있는지 확인하십시오. 다음 서비스에 대한 권한이 있어야합니다:
 
 AWS Identity and Access Management
 
@@ -39,13 +39,13 @@ Amazon CloudWatch Events
 
 ***
 
-### **Important:**
-Preferred regions for lab
+### **중요:**
+각 사용자별 Region 확인
 - North Virginia US-EAST-1
 - Oregon US-WEST-2
 
-If you want to your region choice for the lab. Kindly the select the region which has all four Code* services and Cloud9 service. You can find the [region services list](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/). Stick to the same region throughout all labs. 
-**Make sure you have not reached the VPC or Internet Gateway limits for that region. If you already have 5 VPCs/IGWs, delete at least one before you proceed or choose an alternate region.** 
+실습에서 원하는 지역을 선택하십시오. 4 개의 Code * 서비스와 Cloud9 서비스가 모두있는 지역을 선택하십시오. [지역 서비스 목록] (https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/)을 찾을 수 있습니다. 실습시에는 동일한 지역에서 진행합니다.. 
+**해당 지역의 VPC 또는 인터넷 게이트웨이 제한에 도달하지 않았는지 확인하십시오. 5 개의 VPC / IGW가 이미있는 경우 계속 진행하거나 대체 지역을 선택하기 전에 하나 이상을 삭제하십시오..** 
 
 # Labs
 This workshop is broken into multiple labs. You must complete each Lab before proceeding to the next.

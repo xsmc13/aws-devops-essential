@@ -128,6 +128,9 @@ Provide your Git HTTPs credential when prompted. Credential helper will store it
 
 1. 먼저 실습을 마치는 데 필요한 역할을 만듭니다. CloudFormation 스택을 실행하여 서비스 역할을 만듭니다.
    AWS CodeCommit 리포지토리와 동일한 리전에서 시작해야합니다..
+   
+참고> 아래 01-aws-devops-workshop-roles.template 파일의 260번 라인에서 S3 Bucket이름에 사용자 명을 추가로 한다.
+예) cicd-workshop -> user30-cice-workshop
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-roles \

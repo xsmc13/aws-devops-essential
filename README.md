@@ -2,9 +2,9 @@
 
 ## An Introductory Workshop on CI/CD Practices
 
-In few hours, quickly learn how to effectively leverage various AWS services to improve developer productivity and reduce the overall time to market for new product capabilities. In this session, we will demonstrate a prescriptive approach to incrementally adopt and embrace some of the best practices around continuous integration & delivery using AWS Developer Tools and 3rd party solutions including, AWS CodeCommit (a managed source control service), AWS CodeBuild (a fully managed build service), Jenkins (an open source automated build server), CodePipeline (a fully managed continuous delivery service), and CodeDeploy (an automated application deployment service). We will also highlight some best practices and productivity tips that can help make your software release process fast, automated, and reliable.
+몇 시간 만에 다양한 AWS 서비스를 효과적으로 활용하여 개발자 생산성을 개선하고 신제품 기능 출시 시간을 단축하는 방법을 빠르게 학습하십시오. 이 세션에서는 AWS CodeCommit (관리 소스 제어 서비스), AWS CodeBuild (완전히 AWS CodeCommit)를 포함한 타사 솔루션을 사용하여 지속적인 통합 및 제공에 대한 모범 사례를 점진적으로 채택하고 수용하는 규범적인 접근 방식을 시연합니다. 관리 형 빌드 서비스), Jenkins (오픈 소스 자동 빌드 서버), CodePipeline (완전히 관리되는 지속적 전달 서비스) 및 CodeDeploy (자동 응용 프로그램 배포 서비스). 또한 소프트웨어 릴리스 프로세스를 빠르고 자동화하며 안정적으로 만드는 데 도움이되는 모범 사례 및 생산성 팁을 중점적으로 다룰 것입니다.
 
-See the diagram below for a depiction of the complete architecture.
+전체 아키텍처에 대한 설명은 아래 다이어그램을 참조하십시오.
 
 ![DevOps Workshop Architecture](img/CICD_DevOps_Demo.png)
 

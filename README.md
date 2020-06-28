@@ -49,7 +49,7 @@ Amazon CloudWatch Events
 **해당 지역의 VPC 또는 인터넷 게이트웨이 제한에 도달하지 않았는지 확인하십시오. 5 개의 VPC / IGW가 이미있는 경우 계속 진행하거나 대체 지역을 선택하기 전에 하나 이상을 삭제하십시오..** 
 
 # Labs
-This workshop is broken into multiple labs. You must complete each Lab before proceeding to the next.
+이 워크샵은 여러 실습으로 나뉩니다. 다음 단계로 진행하기 전에 각 실습을 완료해야합니다.
 
 1. [Lab 1 - Build project on the cloud](1_Lab1.md) 
 2. [Lab 2 - Automate deployment for testing](2_Lab2.md)

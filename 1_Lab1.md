@@ -22,7 +22,7 @@ AWS Cloud9는 브라우저만으로 코드를 작성, 실행 및 디버깅 할 �
 user:~/environment $ aws sts get-caller-identity
 ```
 
-You'll see output indicating your account and user information:
+계정 및 사용자 정보가 아래와 같이 출력됩니다.
 ```console
 {
     "Account": "123456789012",
@@ -31,17 +31,17 @@ You'll see output indicating your account and user information:
 }
 ```
 
-Keep your AWS Cloud9 IDE opened in a tab throughout this workshop as we'll use it for activities like cloning, pushing changes to repository and using the AWS CLI.
+복제, 리포지토리 변경 및 AWS CLI 사용과 같은 활동에 사용할 수 있도록이 워크샵 전반에 걸쳐 AWS Cloud9 IDE를 탭으로 열어 두십시오..
 
 ### 💡 Tips
 
-Keep an open scratch pad in Cloud9 or a text editor on your local computer for notes. When the step-by-step directions tell you to note something such as an ID or Amazon Resource Name (ARN), copy and paste that into the scratch pad.
+Cloud9의 열린 스크래치 패드 또는 로컬 컴퓨터의 메모장에 메모를 보관하십시오. 단계별 지침에 따라 ID 또는 ARN (Amazon Resource Name)과 같은 것을 기록하라는 메시지가 표시되면이를 스크래치 패드에 복사하여 붙여 넣습니다..
 
 ***
 
-### Stage 1: Create an AWS CodeCommit Repository
+### Stage 1: AWS CodeCommit 리포지토리 생성
 
-**_To create the AWS CodeCommit repository (console)_**
+**_AWS CodeCommit 리포지토리 생성  (console)_**
 
 1. Open the AWS CodeCommit console at <https://console.aws.amazon.com/codecommit>.
 

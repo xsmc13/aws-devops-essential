@@ -14,7 +14,8 @@ AWS Cloud9는 브라우저만으로 코드를 작성, 실행 및 디버깅 할 �
 4. **Next step** 을 선택합니다.
 5. 인스턴스 크기는 **t2.micro** 로 하고,  **30 분** 간 사용하지 않을 때 인스턴스를 종료하도록 설정합니다.
 6. **Next step** 을 선택합니다.
-7. Review the environment settings and click **Create environment**. It will take several minutes for your environment to be provisioned and prepared.
+7. 설정을 확인 한 후에 **Create environment** 을 클릭합니다. 선택한 Seoul 리전에 Cloud9용 인스턴스가 생성되는데 1-2분 정도 소요됩니다.
+   (생성이 되지 않는 경우, Default VPC의 Internet Gateway나 Routing Table 등 기본적인 네트워크 설정이 제대로 되어 있는지 확인합니다)
 8. Once ready, your IDE will open to a welcome screen. Below that, you should see a terminal prompt similar to: ![setup](./img/setup-cloud9-terminal.png) You can run AWS CLI commands in here just like you would on your local computer. Verify that your user is logged in by running the following command.
 
 ```console

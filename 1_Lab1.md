@@ -71,7 +71,7 @@ user:~/environment $ git clone https://git-codecommit.<YOUR-REGION>.amazonaws.co
 
 ***
 
-### Stage 3: Commit changes to Remote Repo
+### Stage 3: 리모트 리포지토리 
 
 1. IDE 터미널에서 다음 명령을 실행하여 샘플 소스코드를 다운로드하십시오..
 
@@ -83,21 +83,21 @@ user:~/environment $ wget https://s3.amazonaws.com/devops-workshop-0526-2051/v1/
 
 ```console
 user:~/environment $ unzip Web-App-Archive.zip
-user:~/environment $ mv -v Web-App-Archive/* WebAppRepo/
+user:~/environment $ mv -v Web-App-Archive/* user@@-WebAppRepo/
 ```
 
 파일을 옮긴 후에는 로컬 리포지토리에서 새로 다운받은 파일을 추가합니다.. ![cloud9](./img/Cloud9-IDE-Screen-Sample.png)
-3. WebAppRepo 디렉토리로 이동한 후 **_git add_** 을 통해 모든 파일을 리포지토리에 추가합니다.
+3. user@@-WebAppRepo 디렉토리로 이동한 후 **_git add_** 을 통해 모든 파일을 리포지토리에 추가합니다.
 
 ```console
-user:~/environment $ cd WebAppRepo
+user:~/environment $ cd user@@-WebAppRepo
 user:~/environment/WebAppRepo/ $ git add *
 ```
 
 4. **_git commit_** 명령을 실행합니다.
 
 ```console
-user:~/environment/WebAppRepo/ $ git commit -m "Initial Commit"
+user:~/environment/user@@-WebAppRepo/ $ git commit -m "Initial Commit"
 ```
 
 **_💡 Tip_** 커밋 과정을 자세히 보려면 *_git log_** 명령어를 사용합니다.
@@ -105,7 +105,7 @@ user:~/environment/WebAppRepo/ $ git commit -m "Initial Commit"
 5. **_git config credential_** 를 통해 자격증명을 저장합니다.
 
 ```console
-user:~/environment/WebAppRepo/ $ git config credential.helper store
+user:~/environment/user@@-WebAppRepo/ $ git config credential.helper store
 ```
 
 6. **_git push_** 를 통해 로컬 소스 파일을 AWS CodeCommit 리포지토리에 업로드 합니다 (origin), 
@@ -120,14 +120,14 @@ Provide your Git HTTPs credential when prompted. Credential helper will store it
 
 ![buildsuccess](./img/Lab1-CodeCommit-Success.png)
 
-For more information, see [Browse the Contents of a Repository](http://docs.aws.amazon.com/codecommit/latest/userguide/how-to-browse.html).
+더 자세한 설명이 필요하면 아래자료를 참고합니다. [Browse the Contents of a Repository](http://docs.aws.amazon.com/codecommit/latest/userguide/how-to-browse.html).
 
 ***
 
-### Stage 4: Prepare Build Service
+### Stage 4: 빌드 서비스 준비하기
 
-1. First, let us create the necessary roles required to finish labs. Run the CloudFormation stack to create service roles.
-  Ensure you are launching it in the same region as your AWS CodeCommit repo.
+1. 먼저 실습을 마치는 데 필요한 역할을 만듭니다. CloudFormation 스택을 실행하여 서비스 역할을 만듭니다.
+   AWS CodeCommit 리포지토리와 동일한 리전에서 시작해야합니다..
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-roles \
@@ -135,9 +135,9 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 --capabilities CAPABILITY_IAM
 ```
 
-**_Tip_** To learn more about AWS CloudFormation, please refer to [AWS CloudFormation UserGuide.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+**_Tip_** AWS CloudFormation에 대해 더 알기 원하면 아래 자료 참고합니다. [AWS CloudFormation 사용자 가이드.](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 
-2. Upon completion take a note on the service roles created. Check [describe-stacks](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stacks.html) to find the output of the stack.
+2. 완료되면 생성 된 서비스 역할에 대해 기록해 둡니다.. 스텍결과에 대해서 확인하려면 아래 참고합니다 [스택 정보확인](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/describe-stacks.html) .
 
 3. For Console, refer to the CloudFormation [Outputs tab](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-view-stack-data-resources.html) to see output. A S3 Bucket is also created. Make a note of this bucket. This will be used to store the output from CodeBuild in the next step. **_Sample Output:_** ![](./img/cfn-output.png)
 

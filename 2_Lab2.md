@@ -6,51 +6,51 @@
 1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-Env \
+user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user@@-DevopsWorkshop-Env \
 --template-body https://s3.amazonaws.com/devops-workshop-0526-2051/v1/02-aws-devops-workshop-environment-setup.template \
 --capabilities CAPABILITY_IAM
 ```
 
 **_Note_**
-  - 위 스택을 통해 VPC1개, 1개의 서브넷, 라우팅 테이블, 인터넷 게이트웨이, 두개의 EC2 인스턴스가 생성됩니다.Also, the EC2 instances will be launched with a User Data script to **automatically install the AWS CodeDeploy agent**.
+  - 위 스택을 통해 VPC1개, 1개의 서브넷, 라우팅 테이블, 인터넷 게이트웨이, 두개의 EC2 인스턴스가 생성됩니다. EC2 인스턴스는 AWS CodeDeploy agent를 User Data 통해서 설치하게 됩니다.
 
-  - You can refer to [this instruction](http://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) to install the CodeDeploy agent for other OSs like Amazon Linux, RHEL, Ubuntu, or Windows.
+  - Amazon Linux, RHEL, Ubuntu나 윈도우에서 CodeDeploy 에이전트를 설치하려면 다음 문서를 참조 바랍니다. [Codedeploy 에이전트 설치 참고 문서](http://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) 
  
 ***
 
-### Stage 2: Create CodeDeploy Application and Deployment group
+### Stage 2: CodeDeploy Application 및 Deployment Group 생성
 
-1. Run the following to create an application for CodeDeploy.
+1. CodeDeploy 애플리케이션 생성을 위해 아래 명령어를 실행합니다.
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws deploy create-application --application-name DevOps-WebApp
+user:~/environment/WebAppRepo (master) $ aws deploy create-application --application-name user@@-DevOps-WebApp
 ```
 
-2. Run the following to create a deployment group and associates it with the specified application and the user's AWS account. You need to replace the service role with **DeployRoleArn Value** we created using roles CFN stack.
+2. 다음을 실행하여 배포 그룹을 생성하고 지정된 그룹을 지정된 애플리케이션 및 사용자의 AWS 계정과 연결합니다. 서비스 롤은 CloudFormation으로 생성한 **DeployRoleArn 값** 으로 변경합니다.
 
 ```console
 user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeDeployRoleArn")|.OutputValue')
 
-user:~/environment/WebAppRepo (master) $ aws deploy create-deployment-group --application-name DevOps-WebApp \
+user:~/environment/WebAppRepo (master) $ aws deploy create-deployment-group --application-name user@@-DevOps-WebApp \
 --deployment-config-name CodeDeployDefault.OneAtATime \
---deployment-group-name DevOps-WebApp-BetaGroup \
---ec2-tag-filters Key=Name,Value=DevWebApp01,Type=KEY_AND_VALUE \
+--deployment-group-name user@@-DevOps-WebApp-BetaGroup \
+--ec2-tag-filters Key=Name,Value=user@@-DevWebApp01,Type=KEY_AND_VALUE \
 --service-role-arn <<REPLACE-WITH-YOUR-CODEDEPLOY-ROLE-ARN>>
 ```
 
-**_Note:_** We are using the tags to attach instances to the deployment group.
+**_Note:_** 태그를 사용하여 인스턴스를 배포 그룹에 연결합니다.
 
-3. Let us review all the changes by visiting the [CodeDeploy Console](https://console.aws.amazon.com/codedeploy/home).
+3. 진행 상황을 CodeDeploy 콘솔에서 확인 가능 [CodeDeploy 콘솔 화면](https://console.aws.amazon.com/codedeploy/home).
 
 ![deploy](./img/Lab2-CodeDeploy-Success.png)
 
 ***
 
-### Stage 3: Prepare application for deployment
+### Stage 3: 배포를 위한 애플리케이션 준비
 
-1. Without an AppSpec file, AWS CodeDeploy cannot map the source files in your application revision to their destinations or run scripts at various stages of the deployment.
+1. AppSpec 파일이 없으면 AWS CodeDeploy는 애플리케이션 개정판(revision)의 소스 파일을 대상에 매핑하거나 다양한 배포 단계에서 스크립트를 실행할 수 없습니다.
 
-2. Copy the template into a text editor and **save** the file as **_appspec.yml_** in the **_WebAppRepo_** directory of the revision.
+2. Cloud9 에서 아래 내용을 **_user@@-WebAppRepo_** 디렉토리에 **_appspec.yml_** 파일을 생성후 붙여 넣습니다. 
 
 ```yml
 version: 0.0
@@ -76,13 +76,14 @@ hooks:
 
 ```
 
-As a sample shown below:
+샘플 파일:
 
 ![appspec](./img/app-spec.png)
 
-3. **_Review_** the **_script folder_** in the repo for the various scripts like Start, Stop, health check etc. These scripts will be called as per the hook definition in **_appspec.yml_** file during deployment.
+3. 이 스크립트들은 **_appspec.yml_** 파일과 배포 과정에서 함께 실생됩니다.
 
-4. Since we are going to deploy the application via CodeDeploy, we need to package additional files needed by CodeDeploy. Let us **_make change_** to the **_buildspec.yml_** to incorporate the changes.
+4. CodeDeploy를 통해 응용 프로그램을 배포 할 예정이므로 CodeDeploy에 필요한 추가 파일을 패키지해야합니다.
+ **_buildspec.yml_** 파일을 열어서 아래 artifact 부분에 업데이트 합니다.
 
 ```yml
 version: 0.1
@@ -109,9 +110,9 @@ artifacts:
 
 ```
 
-5. **Save** the changes to buildspec.yml. 
+5. buildspec.yml 파일을 수정 후 저장합니다.
 
-6. Commit & push the build specification file to repository
+6. 리포지토리에 추가하고 업로드 합니다.
 
 ```console
 user:~/environment/WebAppRepo/ $ git add buildspec.yml
@@ -123,7 +124,7 @@ user:~/environment/WebAppRepo/ $ git push -u origin master
 
 ***
 
-### Stage 4: Deploy an application revision
+### Stage 4: 애플리케이션 재배포
 
 1. Run the **_start-build_** command:
 

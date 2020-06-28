@@ -1,15 +1,15 @@
-## Lab 1 - Build project on the cloud
+## Lab 1 - AWS에서 프로젝트 구축
 
-### AWS Cloud9 IDE - Set up
+### AWS Cloud9 IDE , 통합 개발 환경 구축
 
-AWS Cloud9 is a cloud-based integrated development environment (IDE) that lets you write, run, and debug your code with just a browser. It includes a code editor, debugger, and terminal. Cloud9 comes pre-packaged with essential tools for popular programming languages and the AWS Command Line Interface (CLI) pre-installed so you don't need to install files or configure your laptop for this workshop. Your Cloud9 environment will have access to the same AWS resources as the user with which you logged into the AWS Management Console.
+AWS Cloud9는 브라우저만으로 코드를 작성, 실행 및 디버깅 할 수있는 클라우드 기반 통합 개발 환경 (IDE)입니다. 코드 편집기, 디버거 및 터미널이 포함되어 있습니다. Cloud9에는 널리 사용되는 프로그래밍 언어 및 AWS Command Line Interface (CLI)에 대한 필수 도구가 사전 패키지로 제공되므로이 워크샵을 위해 파일을 설치하거나 랩톱을 구성 할 필요가 없습니다. Cloud9 환경은 AWS Management Console에 로그인 한 사용자와 동일한 AWS 리소스에 액세스 할 수 있습니다.
 
 Take a moment now and setup your Cloud9 development environment.
 
 ### ✅  Step-by-step Instructions
 
-1. Go to the AWS Management Console, click **Services** then select **Cloud9** under Developer Tools.
-2. Click **Create environment**.
+1. ASW 관리 콘솔에서, **Services(서비스)** 를 클릭하고 개발도구(Developer Tools) 아래 **Cloud9** 을 선택합니다.
+2. **Create environment** 을 .
 3. Enter `MyDevEnvironment` into **Name** and optionally provide a **Description**.
 4. Click **Next step**.
 5. You may leave **Environment settings** at their defaults of launching a new **t2.micro** EC2 instance which will be paused after **30 minutes** of inactivity.

@@ -42,9 +42,9 @@
 아래 이미지는 성공적으로 생성 된 파이프 라인을 보여줍니다.
 ![pipeline-complete](./img/Lab3-Stage1-Complete.PNG)
 
-10. Now that you've created your pipeline, you can view it in the console. Pipeline will start automatically in few minutes. Otherwise, test it by manually clicking the **Release** button.
+10. 파이프 라인을 생성 했으므로 콘솔에서 파이프 라인을 볼 수 있습니다. 몇 분 후에 파이프 라인이 자동으로 시작됩니다. 그렇지 않으면 수동으로 클릭하여 테스트하십시오. **Release** 버튼을 누르시면 됩니다.
 
-Image below shows successfully executed pipeline.
+아래 이미지는 성공적으로 실행 된 파이프 라인을 보여줍니다.
 ![pipeline-released](./img/Lab3-Stage1-Complete-released.PNG)
 
 ***

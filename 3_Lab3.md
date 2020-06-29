@@ -3,26 +3,26 @@
 
 ### Stage 1: Create a Pipeline (Console)
 
-To create a pipeline in the console, you'll need to provide the source file location and information about the providers you will use for your actions.
+콘솔에서 파이프 라인을 만들려면 소스 파일 위치와 작업에 사용할 공급자에 대한 정보를 제공해야합니다.
 
-When you use the pipeline wizard, AWS CodePipeline creates the names of stages (Source, Build, Staging). These names cannot be changed. However, you can delete Build and Staging if you prefer to alter the names. You can give more specific names (for example, BuildToGamma or DeployToProd) to stages you add later.
+파이프 라인 마법사를 사용하면 AWS CodePipeline이 스테이지 이름 (소스, 빌드, 스테이징)을 생성합니다. 이 이름은 변경할 수 없습니다. 그러나 이름을 변경하려면 빌드 및 스테이징을 삭제할 수 있습니다. 삭제하고 추가하는 경우 보다 구체적인 이름 (예 : BuildToGamma 또는 DeployToProd)을 지정할 수 있습니다.
 
-Also, existing pipeline configuration can be exported and used to create pipeline in another region.
+또한 기존 파이프 라인 구성을 내보내 다른 지역에서 파이프 라인을 만드는 데 사용할 수 있습니다.
 
-1. Sign in to the **AWS Management Console** and open the **AWS CodePipeline** console at [http://console.aws.amazon.com/codepipeline](http://console.aws.amazon.com/codepipeline).
+1. **AWS Management Console** 에 로그인 후 **AWS CodePipeline** 콘솔을 엽니다 [http://console.aws.amazon.com/codepipeline](http://console.aws.amazon.com/codepipeline).
 
-2. On the **CodePipeline Home** page, choose **Create pipeline**.
+2. **CodePipeline Home** 페이지에서 **Create pipeline** 을 클릭합니다.
 
-3. On the **Step 1: Choose pipeline settings** page, in the **Pipeline name** box, type the name for your pipeline like **WebAppPipeline**.
+3. **Step 1: Choose pipeline settings** 페이지의 **Pipeline name** 박스에서 이름을 **user@@-WebAppPipeline** 과 같이 입력합니다.
 
-4. For **Service role**, Select **Existing service role** and choose the Role name from drop down starting with **DevopsWorkshop**
+4. **Service role** 에서 **Existing service role** 선택 후 Role이름을 선택창에서 **user@@-DevopsWorkshop** 를 선택합니다.
 
-5. For **Artifact store**, Select **Custom location** and choose the  Bucket from drop down starting with **cicd-workshop**, and then choose **Next step**.
+5. **Artifact store** 에서 **Custom location** 을 선택합니다. S3 버킷을 선택창에서 **user@@-cicd-workshop** 를 선택 후 **Next step** 을 누릅니다.
 
 **_Note_**
-Within a single AWS account, each pipeline you create in a region must have a unique name. Names can be reused for pipelines in different regions.
+단일 AWS 계정 내에서 리전에서 생성한 각 파이프 라인의 이름은 고유해야합니다. 다른 지역의 파이프 라인에 이름을 재사용 할 수 있습니다.
 
-After you create a pipeline, you cannot change its name. For information about other limitations, see [Limits in AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/limits.html).
+파이프 라인을 생성 한 후에는 파이프 라인 이름을 변경할 수 없습니다. 다른 제한 사항에 대한 정보는 다음 페이지에서 확인하세요 [Limits in AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/limits.html).
 
 6. On the **Step 2: Source** page, in the **Source provider** drop-down list, choose the type of repository where your source code is stored and specify its required options:
   - **AWS CodeCommit**: In **Repository name**, choose the name of the AWS CodeCommit repository you created in Lab 1 to use as the source location for your pipeline. In **Branch name**, from the drop-down list, choose the **master** branch.

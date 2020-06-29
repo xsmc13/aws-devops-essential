@@ -24,21 +24,22 @@
 
 파이프 라인을 생성 한 후에는 파이프 라인 이름을 변경할 수 없습니다. 다른 제한 사항에 대한 정보는 다음 페이지에서 확인하세요 [Limits in AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/limits.html).
 
-6. On the **Step 2: Source** page, in the **Source provider** drop-down list, choose the type of repository where your source code is stored and specify its required options:
-  - **AWS CodeCommit**: In **Repository name**, choose the name of the AWS CodeCommit repository you created in Lab 1 to use as the source location for your pipeline. In **Branch name**, from the drop-down list, choose the **master** branch.
-  - In **Change Detection Mode** leave the default selection of Amazon CloudWatch Events selection. Choose **Next step**.
+6. **Step 2: Source** 페이지에서 **Source provider** 에서, 소스 코드가 저장된 저장소 유형을 선택하고 필요한 옵션을 지정하십시오:
+  - **AWS CodeCommit**: **Repository name** 에서는 AWS CodeCommit 이름은 Lab1 에서 생성한 리포지토리를 선택합니다. 
+**Branch name** 에서는 **master** 브랜치를 선택합니다.
+- **Change Detection Mode** 에서는 기본값이 Amazon CloudWatch Events selection 을 선택합니다. **Next step**을 클릭합니다.
 
-7. On the **Step 3: Build** page, do the following
-  - Choose **AWS CodeBuild**, and then **Select** an **existing build project** we created in Lab 1.
-  - Then choose **Next step**.
+7. **Step 3: Build** 페이지에서는, 아래대로 따라 하십시오.
+  - **AWS CodeBuild** 를 선택 후, **existing build project** Lab1에서 생성한 프로젝트를 선택하세요.
+  - **Next step** 를 선택하세요.
 
-8. On the **Step 4: Deploy** page, do the following, and then choose Next step:
-  - Choose the following default providers from the Deployment provider drop-down list:
-    + **AWS CodeDeploy:** Type or choose the name of an existing AWS CodeDeploy application in Application name and the name of a deployment group for that application in Deployment group **created in Lab2** and then choose **Next step**.
+8. **Step 4: Deploy** 페이지에서, 아래대로 설정하시고 Next step을 클릭하세요:
+  - 배포 제공자(Deployment Provider)는 드롭 다운 목록에서 다음 기본 제공자를 선택하십시오.:
+    + **AWS CodeDeploy:** AWS CodeDeploy application 에서 생성한 Application 이름과 Lab2에서 생성한 Deployment group 을 선택 후 **Next step** 을 클릭하세요.
 
-9. On the **Step 5: Review** page, review your pipeline configuration, and then choose **Create pipeline** to create the pipeline.
+9. **Step 5: Review** 페이지에서, 파이프라인 설정을 확인 후 **Create pipeline** 을 눌러 파이프라인을 생성하세요.
 
-Image below shows successfully created pipeline.
+아래 이미지는 성공적으로 생성 된 파이프 라인을 보여줍니다.
 ![pipeline-complete](./img/Lab3-Stage1-Complete.PNG)
 
 10. Now that you've created your pipeline, you can view it in the console. Pipeline will start automatically in few minutes. Otherwise, test it by manually clicking the **Release** button.

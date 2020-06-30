@@ -51,7 +51,7 @@
 
 ### Stage 2: Create CodeDeploy Deployment group for Production
 
-1. Run the following to create a deployment group and associates it with the specified application and the user's AWS account. You need to replace the service role ARN we created using roles stack.
+1. 다음을 실행하여 배포 그룹을 생성하고 이를 지정된 애플리케이션 및 사용자의 AWS 계정과 연결합니다. CodeDeploy 의 ARN을 교체해야합니다.
 
 ```console
 user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeDeployRoleArn")|.OutputValue')
@@ -63,20 +63,20 @@ user:~/environment $ aws deploy create-deployment-group --application-name DevOp
 --service-role-arn <<REPLACE-WITH-YOUR-CODEDEPLOY-ROLE-ARN>>
 ```
 
-**_Note:_** We are using the different group name and Production tag to attach instance to the deployment group.
+**_Note:_** 다른 그룹 이름과 프로덕션 태그를 사용하여 인스턴스를 배포 그룹에 연결합니다..
 
 ***
 
-### Stage 3: Edit a Pipeline (Console)
+### Stage 3: AWS 콘솔에서 파이프라인 수정
 
-You can use the AWS CodePipeline console to add, edit, or remove stages in a pipeline, as well as to add, edit, or remove actions in a stage.
+AWS CodePipeline 콘솔을 사용하여 파이프 라인에서 단계를 추가, 편집 또는 제거 할 수있을뿐만 아니라 단계에서 작업을 추가, 편집 또는 제거 할 수 있습니다.
 
-We will edit the pipeline to add the stage for production deployment and introduce manual gating for production deployment.
+수동으로 파이프 라인을 편집하여 배포 단계를 추가하는 방법을 소개합니다.
 
-1. On the pipeline details page, choose **Edit**. This opens the editing page for the pipeline.
-2. To add a stage, choose **+ Add stage** after the existing **Deploy** Stage.
-3. Provide a name for the stage as **Production**, and then add an one action to it. Items marked with an asterisk are required.
-4. Then choose **+ Add action group**. In **Edit Action** section: provide name as **ProductionDeployment** and action provider as **AWS CodeDeploy**
+1. 파이프 라인 세부 정보 페이지에서 **Edit** 을 선택합니다. 파이프 라인에 대한 편집 페이지가 열립니다.
+2. 스테이지를 추가하기 위해 **Deploy** 다음에 **+ Add stage** 를 선택합니다.
+3. 스테이지 이름에 **Production** 을 입력하고, 그런 다음 하나의 작업을 추가하십시오. 별표가 표시된 항목이 필요합니다.
+4. **+ Add action group** 을선택하고 **Edit Action** 섹센에서 이름을 **ProductionDeployment** 적고, **AWS CodeDeploy** 을 선택합니다.
 5. In **AWS CodeDeploy:** Type or choose the name of an existing AWS CodeDeploy application in Application name and the name the **production deployment group** created previous stage
 7. In **Input artifacts**: select the **BuildArtifact**
 8. Choose **Save**.

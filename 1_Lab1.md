@@ -86,7 +86,7 @@ user:~/environment $ unzip Web-App-Archive.zip
 user:~/environment $ mv -v Web-App-Archive/* user@@-WebAppRepo/
 ```
 
-파일을 옮긴 후에는 로컬 리포지토리에서 새로 다운받은 파일을 추가합니다.. ![cloud9](./img/Cloud9-IDE-Screen-Sample.png)
+![cloud9](./img/Cloud9-IDE-Screen-Sample.png)
 3. user@@-WebAppRepo 디렉토리로 이동한 후 **_git add_** 을 통해 모든 파일을 리포지토리에 추가합니다.
 
 ```console

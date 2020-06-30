@@ -32,10 +32,12 @@ user:~/environment/WebAppRepo (master) $ aws deploy create-application --applica
 ```console
 user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeDeployRoleArn")|.OutputValue')
 
+// 아래 --ec2-tag-filters 의 Name 키로 등록된 값에 배포가 된다. 즉 EC2 인스턴스 태그 Name의 값에 DevWebApp01 이라고 되어 있으며 해당 인스턴스에 배포가 된다.
+
 user:~/environment/WebAppRepo (master) $ aws deploy create-deployment-group --application-name user@@-DevOps-WebApp \
 --deployment-config-name CodeDeployDefault.OneAtATime \
 --deployment-group-name user@@-DevOps-WebApp-BetaGroup \
---ec2-tag-filters Key=Name,Value=user@@-DevWebApp01,Type=KEY_AND_VALUE \
+--ec2-tag-filters Key=Name,Value=DevWebApp01,Type=KEY_AND_VALUE \
 --service-role-arn <<REPLACE-WITH-YOUR-CODEDEPLOY-ROLE-ARN>>
 ```
 
@@ -81,7 +83,7 @@ hooks:
 
 ![appspec](./img/app-spec.png)
 
-3. 이 스크립트들은 **_appspec.yml_** 파일과 배포 과정에서 함께 실생됩니다.
+3. 이 스크립트들은 **_appspec.yml_** 파일과 배포 과정에서 함께 실됩니다.
 
 4. CodeDeploy를 통해 응용 프로그램을 배포 할 예정이므로 CodeDeploy에 필요한 추가 파일을 패키지해야합니다.
  **_buildspec.yml_** 파일을 열어서 아래 artifact 부분에 업데이트 합니다.

@@ -77,9 +77,9 @@ AWS CodePipeline 콘솔을 사용하여 파이프 라인에서 단계를 추가,
 2. 스테이지를 추가하기 위해 **Deploy** 다음에 **+ Add stage** 를 선택합니다.
 3. 스테이지 이름에 **Production** 을 입력하고, 그런 다음 하나의 작업을 추가하십시오. 별표가 표시된 항목이 필요합니다.
 4. **+ Add action group** 을선택하고 **Edit Action** 섹센에서 이름을 **ProductionDeployment** 적고, **AWS CodeDeploy** 을 선택합니다.
-5. In **AWS CodeDeploy:** Type or choose the name of an existing AWS CodeDeploy application in Application name and the name the **production deployment group** created previous stage
-7. In **Input artifacts**: select the **BuildArtifact**
-8. Choose **Save**.
+5. **AWS CodeDeploy:** 에서 애플리케이션 이름에 기존 AWS CodeDeploy 애플리케이션의 이름을 입력하거나 선택하십시오. **production deployment group** 에 앞서 작성한 이름을 넣는다.
+7. **Input artifacts**: 에서 **BuildArtifact** 를 선택한다.
+8. **Save**. 통해서 저장한다.
 9. Finally, save changes by clicking **Save** button on top.
 
 ![pipeline-edit](./img/Lab3-Stage3-Editing2.PNG)

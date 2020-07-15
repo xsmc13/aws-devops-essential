@@ -6,7 +6,7 @@
 1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user@@-DevopsWorkshop-Env \
+user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-Env \
 --template-body https://s3.amazonaws.com/devops-workshop-0526-2051/v1/02-aws-devops-workshop-environment-setup.template \
 --capabilities CAPABILITY_IAM
 ```
@@ -24,7 +24,7 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 1. CodeDeploy 애플리케이션 생성을 위해 아래 명령어를 실행합니다.
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws deploy create-application --application-name user@@-DevOps-WebApp
+user:~/environment/WebAppRepo (master) $ aws deploy create-application --application-name DevOps-WebApp
 ```
 
 2. 다음을 실행하여 배포 그룹을 생성하고 지정된 그룹을 지정된 애플리케이션 및 사용자의 AWS 계정과 연결합니다. 서비스 롤은 CloudFormation으로 생성한 **DeployRoleArn 값** 으로 변경합니다.
@@ -34,9 +34,9 @@ user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cl
 
 // 아래 --ec2-tag-filters 의 Name 키로 등록된 값에 배포가 된다. 즉 EC2 인스턴스 태그 Name의 값에 DevWebApp01 이라고 되어 있으며 해당 인스턴스에 배포가 된다.
 
-user:~/environment/WebAppRepo (master) $ aws deploy create-deployment-group --application-name user@@-DevOps-WebApp \
+user:~/environment/WebAppRepo (master) $ aws deploy create-deployment-group --application-name DevOps-WebApp \
 --deployment-config-name CodeDeployDefault.OneAtATime \
---deployment-group-name user@@-DevOps-WebApp-BetaGroup \
+--deployment-group-name DevOps-WebApp-BetaGroup \
 --ec2-tag-filters Key=Name,Value=DevWebApp01,Type=KEY_AND_VALUE \
 --service-role-arn <<REPLACE-WITH-YOUR-CODEDEPLOY-ROLE-ARN>>
 ```
@@ -53,7 +53,7 @@ user:~/environment/WebAppRepo (master) $ aws deploy create-deployment-group --ap
 
 1. AppSpec 파일이 없으면 AWS CodeDeploy는 애플리케이션 개정판(revision)의 소스 파일을 대상에 매핑하거나 다양한 배포 단계에서 스크립트를 실행할 수 없습니다.
 
-2. Cloud9 에서 아래 내용을 **_user@@-WebAppRepo_** 디렉토리에 **_appspec.yml_** 파일을 생성후 붙여 넣습니다. 
+2. Cloud9 에서 아래 내용을 **_WebAppRepo_** 디렉토리에 **_appspec.yml_** 파일을 생성후 붙여 넣습니다. 
 
 ```yml
 version: 0.0

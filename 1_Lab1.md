@@ -4,13 +4,13 @@
 
 AWS Cloud9는 브라우저만으로 코드를 작성, 실행 및 디버깅 할 수있는 클라우드 기반 통합 개발 환경 (IDE)입니다. 코드 편집기, 디버거 및 터미널이 포함되어 있습니다. Cloud9에는 널리 사용되는 프로그래밍 언어 및 AWS Command Line Interface (CLI)에 대한 필수 도구가 사전 패키지로 제공되므로이 워크샵을 위해 파일을 설치하거나 랩톱을 구성 할 필요가 없습니다. Cloud9 환경은 AWS Management Console에 로그인 한 사용자와 동일한 AWS 리소스에 액세스 할 수 있습니다.
 
-통합 개발 환경은 "Seoul(ap-northeast-2)"로 선택합니다.
+통합 개발 환경은 "Seoul(ap-northeast-2)" or Tokyo(ap-northeast-1)로 선택합니다.
 
 ### ✅ Cloud9 생성 순서
 
 1. ASW 관리 콘솔에서, **Services(서비스)** 를 클릭하고 개발도구(Developer Tools) 아래 **Cloud9** 을 선택합니다.
 2. **Create environment** 을 선택합니다.
-3. Cloud9 생성할 개발 환경이름을 `user**-MyDevEnvironment` 로 선택합니다.
+3. Cloud9 생성할 개발 환경이름을 `MyDevEnvironment` 로 선택합니다.
 4. **Next step** 을 선택합니다.
 5. 인스턴스 크기는 **t2.micro** 로 하고,  **30 분** 간 사용하지 않을 때 인스턴스를 종료하도록 설정합니다.
 6. **Next step** 을 선택합니다.
@@ -46,11 +46,11 @@ Cloud9의 열린 스크래치 패드 또는 로컬 컴퓨터의 메모장에 메
 1. AWS CodeCommit 콘솔을 열어서 작업을 시작합니다. <https://console.aws.amazon.com/codecommit>.
 
 2. 첫 화면에서 좌측메뉴에서 "Getting Started" 를 선택합니다. (If a **_Dashboard_** page appears instead, choose **_Create repository_**.)
-3. **_Create repository_** 페이지에서, **_Repository name_** 박스에,  **_user@@-WebAppRepo_** 를 입력합니다.
-4. **_Description_** 박스에, **_user@@데모 리포지토리_** 라고 적습니다.
-5. **_Create_** 를 클릭하고 **_user@@-WebAppRepo_** 리포지토리를 생성합니다.
+3. **_Create repository_** 페이지에서, **_Repository name_** 박스에,  **_WebAppRepo_** 를 입력합니다.
+4. **_Description_** 박스에, **_데모 리포지토리_** 라고 적습니다.
+5. **_Create_** 를 클릭하고 **_WebAppRepo_** 리포지토리를 생성합니다.
 
-**_Note_** 이 자습서의 나머지 단계에서는 AWS CodeCommit 리포지토리의 이름을 **_user@@-WebAppRepo_** 로 지정했다고 가정합니다. 별도로 리포지토리를 만드는 경우 아래 문서 참조 [리포지토리 만들기](http://docs.aws.amazon.com/codecommit/latest/userguide/how-to-create-repository.html).
+**_Note_** 이 자습서의 나머지 단계에서는 AWS CodeCommit 리포지토리의 이름을 **_WebAppRepo_** 로 지정했다고 가정합니다. 별도로 리포지토리를 만드는 경우 아래 문서 참조 [리포지토리 만들기](http://docs.aws.amazon.com/codecommit/latest/userguide/how-to-create-repository.html).
 
 ***
 
@@ -83,21 +83,21 @@ user:~/environment $ wget https://s3.amazonaws.com/devops-workshop-0526-2051/v1/
 
 ```console
 user:~/environment $ unzip Web-App-Archive.zip
-user:~/environment $ mv -v Web-App-Archive/* user@@-WebAppRepo/
+user:~/environment $ mv -v Web-App-Archive/* WebAppRepo/
 ```
 
 ![cloud9](./img/Cloud9-IDE-Screen-Sample.png)
-3. user@@-WebAppRepo 디렉토리로 이동한 후 **_git add_** 을 통해 모든 파일을 리포지토리에 추가합니다.
+3. WebAppRepo 디렉토리로 이동한 후 **_git add_** 을 통해 모든 파일을 리포지토리에 추가합니다.
 
 ```console
-user:~/environment $ cd user@@-WebAppRepo
+user:~/environment $ cd WebAppRepo
 user:~/environment/WebAppRepo/ $ git add *
 ```
 
 4. **_git commit_** 명령을 실행합니다.
 
 ```console
-user:~/environment/user@@-WebAppRepo/ $ git commit -m "Initial Commit"
+user:~/environment/WebAppRepo/ $ git commit -m "Initial Commit"
 ```
 
 **_💡 Tip_** 커밋 과정을 자세히 보려면 *_git log_** 명령어를 사용합니다.
@@ -105,7 +105,7 @@ user:~/environment/user@@-WebAppRepo/ $ git commit -m "Initial Commit"
 5. **_git config credential_** 를 통해 자격증명을 저장합니다.
 
 ```console
-user:~/environment/user@@-WebAppRepo/ $ git config credential.helper store
+user:~/environment/WebAppRepo/ $ git config credential.helper store
 ```
 
 6. **_git push_** 를 통해 로컬 소스 파일을 AWS CodeCommit 리포지토리에 업로드 합니다 (origin), 
@@ -129,12 +129,8 @@ Provide your Git HTTPs credential when prompted. Credential helper will store it
 1. 먼저 실습을 마치는 데 필요한 역할을 만듭니다. CloudFormation 스택을 실행하여 서비스 역할을 만듭니다.
    AWS CodeCommit 리포지토리와 동일한 리전에서 시작해야합니다..
    
-참고> 아래 01-aws-devops-workshop-roles.template 파일의 260번 라인에서 S3 Bucket이름에 사용자 명을 추가로 한다.
-
-예) cicd-workshop -> user30-cice-workshop
-
 ```console
-user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user@@-DevopsWorkshop-roles \
+user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-roles \
 --template-body https://s3.amazonaws.com/devops-workshop-0526-2051/v1/01-aws-devops-workshop-roles.template \
 --capabilities CAPABILITY_IAM
 ```
@@ -149,8 +145,8 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 
 ```console
 user:~/environment/WebAppRepo (master) $ sudo yum -y install jq
-user:~/environment/WebAppRepo (master) $ echo YOUR-BuildRole-ARN: $(aws cloudformation describe-stacks --stack-name user@@-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeBuildRoleArn")|.OutputValue')
-user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name user@@-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-BuildRole-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeBuildRoleArn")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
 ```
 
 5. CLI에서 **create CodeBuild** 프로젝트를 생성합니다.  AWS CLI를 사용하여 빌드 프로젝트를 생성하려면 JSON 형식의 입력이 필요합니다.
@@ -252,7 +248,7 @@ user:~/environment $ aws codebuild create-project --cli-input-json file://create
 ### Stage 5: 클라우드에서 코드 빌드하기
 
 1. 빌드 사양(Build Spec)은 AWS CodeBuild가 빌드를 실행하는 데 사용하는 빌드 명령 및 YAML 형식의 관련 설정 모음입니다.
-    **_buildspec.yml_** 파일을 **user@@-WebAppRepo** 폴더 아래에 생성합니다. 아래 내용을 복사해서 붙여넣고 저장합니다. CodeBilde에 대해서 더 알기원하면 아래 파일 참고합니다 [CodeBuild 동작원리](http://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html#concepts-how-it-works).
+    **_buildspec.yml_** 파일을 **WebAppRepo** 폴더 아래에 생성합니다. 아래 내용을 복사해서 붙여넣고 저장합니다. CodeBilde에 대해서 더 알기원하면 아래 파일 참고합니다 [CodeBuild 동작원리](http://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html#concepts-how-it-works).
 
 ```yaml
 version: 0.1
@@ -294,7 +290,7 @@ user:~/environment/WebAppRepo/ $ git push -u origin master
 3. **_start-build_** 명령어 실행:
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name user@@-devops-webapp-project
+user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name devops-webapp-project
 ```
 
 **_Note:_** JSON을 통해 더 고급 구성 설정으로 빌드를 시작할 수 있습니다. 그것에 대해 더 자세히 알고 싶다면 다음 사이트를 방문하십시오. [here](http://docs.aws.amazon.com/codebuild/latest/userguide/run-build.html#run-build-cli).

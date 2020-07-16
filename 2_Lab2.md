@@ -132,7 +132,7 @@ user:~/environment/WebAppRepo/ $ git push -u origin master
 1. **_start-build_** 명령어를 실행합니다:
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name user@@-devops-webapp-project
+user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-name devops-webapp-project
 ```
 
 2. 빌드가 성공했는지 확인하려면 CodeBuild 콘솔을 방문하십시오. 빌드가 성공적으로 완료되면 새로 생성된 **_WebAppOutputArtifact.zip_** 파일이 S3 Bucket 에 업로드 된 것을 확인할 수 있습니다.

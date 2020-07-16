@@ -80,16 +80,16 @@ AWS CodePipeline 콘솔을 사용하여 파이프 라인에서 단계를 추가,
 5. **AWS CodeDeploy:** 에서 애플리케이션 이름에 기존 AWS CodeDeploy 애플리케이션의 이름을 입력하거나 선택하십시오. **production deployment group** 에 앞서 작성한 이름을 넣는다.
 7. **Input artifacts**: 에서 **BuildArtifact** 를 선택한다.
 8. **Save**. 통해서 저장한다.
-9. Finally, save changes by clicking **Save** button on top.
+9. 마지막으로 위에 **Save** 버튼을 눌러 변경사항을 저장한다.
 
 ![pipeline-edit](./img/Lab3-Stage3-Editing2.PNG)
 ***
 
-### Stage 4: Add Manual approval action
+### Stage 4: 수동 승인 과정 추가
 
-In AWS CodePipeline, you can add an approval action to a stage in a pipeline at the point where you want the pipeline execution to stop so that someone with the required AWS Identity and Access Management permissions can approve or reject the action.
+AWS CodePipeline에서 필요한 AWS Identity and Access Management 권한이있는 사람이 작업을 승인 또는 거부 할 수 있도록 파이프 라인 실행을 중지하려는 지점에서 파이프 라인의 단계에 승인 작업을 추가 할 수 있습니다.
 
-If the action is approved, the pipeline execution resumes. If the action is rejected—or if no one approves or rejects the action within seven days of the pipeline reaching the action and stopping—the result is the same as an action failing, and the pipeline execution does not continue.
+작업이 승인되면 파이프 라인 실행이 다시 시작됩니다. 파이프 라인이 조치에 도달하여 중지 한 후 7 일 이내에 조치를 승인하거나 거부하지 않는 경우 조치가 실패한 결과와 동일하며 파이프 라인 실행이 계속되지 않습니다.
 
 1. **Create SNS topic** for Approval notification. And note the **topic ARN** from the result.
 

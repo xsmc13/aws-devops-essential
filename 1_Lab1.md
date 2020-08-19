@@ -71,6 +71,20 @@ user:~/environment $ git clone https://git-codecommit.<YOUR-REGION>.amazonaws.co
 
 ***
 
+<AWS CodeCommit Clone 할 때 에러나는 경우>
+
+아래 명령어 실행시 403 에러가 나는 경우
+
+git clone https://git-codecommit.<YOUR-REGION>.amazonaws.com/v1/repos/WebAppRepo
+
+아래 명령어 실행
+
+$git config --global credential.helper "aws codecommit credential-helper$@"
+
+위 명령어 실행후  git clone  재실행 -> 실행  후 Username & Password 입력
+
+(AWS CodeCommit 자격 증명은 "IAM->보안자격증명->AWS CodeCommit에 대한 HTTPS Git 자격 증명 에서 생성" 에서 생성)
+
 ### Stage 3: 리모트 리포지토리 
 
 1. IDE 터미널에서 다음 명령을 실행하여 샘플 소스코드를 다운로드하십시오..

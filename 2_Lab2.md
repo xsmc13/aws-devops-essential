@@ -3,7 +3,7 @@
 
 ### Stage 1: 테스트를 위한 환경 설정
 
-1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:
+1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:   (Terraform 으로 인프라를 구성한 경우 아래 작업 불필요)
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-Env \

@@ -85,6 +85,9 @@ $git config --global credential.helper "aws codecommit credential-helper$@"
 
 (AWS CodeCommit 자격 증명은 "IAM->보안자격증명->AWS CodeCommit에 대한 HTTPS Git 자격 증명 에서 생성" 에서 생성)
 
+그래도 안되는 경우 
+해당 리포지토리 아래 .git 디렉토리의 config 파일에서 credential 아래 부분 모두 삭제 후 다시 실행
+
 ### Stage 3: 리모트 리포지토리 
 
 1. IDE 터미널에서 다음 명령을 실행하여 샘플 소스코드를 다운로드하십시오..

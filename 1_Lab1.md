@@ -73,7 +73,7 @@ user:~/environment $ git clone https://git-codecommit.<YOUR-REGION>.amazonaws.co
 
 <AWS CodeCommit Clone 할 때 에러나는 경우>
 
-아래 명령어 실행시 403 에러가 나는 경우
+아래 명령어 실행시 403 에러가 나는 경우 (CodeCommit 리포지토리에 접근 권한이 없기 때문)
 
 git clone https://git-codecommit.<YOUR-REGION>.amazonaws.com/v1/repos/WebAppRepo
 
@@ -93,7 +93,7 @@ $git config --global credential.helper "aws codecommit credential-helper$@"
 1. IDE 터미널에서 다음 명령을 실행하여 샘플 소스코드를 다운로드하십시오..
 
 ```console
-user:~/environment $ wget https://s3.amazonaws.com/devops-workshop-0526-2051/v1/Web-App-Archive.zip
+user:~/environment $ wget https://github.com/lormadus/aws-devops-essential/blob/master/sample-app/Web-App-Archive.zip
 ```
 
 2. 압축파일을 해제하고 Web-App-Archive 폴더 아래 파일을 모두 WebAppRepo로 이동시킵니다.

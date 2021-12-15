@@ -42,8 +42,6 @@ Amazon CloudWatch Events
 
 ### **중요:**
 각 사용자별 Region 확인
-- North Virginia US-EAST-1
-- Oregon US-WEST-2
 <img src="https://raw.githubusercontent.com/lormadus/aws-devops-essential/master/img/vpc.png">
 
 실습에서 원하는 지역을 선택하십시오. 4 개의 Code * 서비스와 Cloud9 서비스가 모두있는 지역을 선택하십시오. [지역 서비스 목록] (https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services) 을 찾을 수 있습니다. 실습시에는 동일한 지역에서 진행합니다.. 

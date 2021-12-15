@@ -144,10 +144,21 @@ Provide your Git HTTPs credential when prompted. Credential helper will store it
 ### Stage 4: 빌드 서비스 준비하기
 
 1. 먼저 실습을 마치는 데 필요한 역할을 만듭니다. CloudFormation 스택을 실행하여 서비스 역할을 만듭니다.
-   AWS CodeCommit 리포지토리와 동일한 리전에서 시작해야합니다..
+   AWS CodeCommit 리포지토리와 동일한 리전에서 시작해야합니다.
    
+   CloudFormation 스택 생성 전에 스택 이름을 아래와 같이 user** 부분을 추가해 줍니다.  그리고 본인 Repository의 01-aws-devops-workshop-roles.template 파일의
+   S3 Bucket 이름 앞에서 user**을 추가해 줍니다.  
+   
+```   
+    "S3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy":"Retain",
+      "Properties": {
+        "BucketName" : { "Fn::Join" : ["", [ "user30-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"} ]] },
+```
+    01-aws-devops-workshop-roles.template  수정후에 아래와 같이 실행합니다.
 ```console
-user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-roles \
+user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user**-DevopsWorkshop-roles \
 --template-body https://s3.amazonaws.com/devops-workshop-0526-2051/v1/01-aws-devops-workshop-roles.template \
 --capabilities CAPABILITY_IAM
 ```
@@ -162,8 +173,8 @@ user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack
 
 ```console
 user:~/environment/WebAppRepo (master) $ sudo yum -y install jq
-user:~/environment/WebAppRepo (master) $ echo YOUR-BuildRole-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeBuildRoleArn")|.OutputValue')
-user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-BuildRole-ARN: $(aws cloudformation describe-stacks --stack-name user**-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeBuildRoleArn")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name user**-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
 ```
 
 5. CLI에서 **create CodeBuild** 프로젝트를 생성합니다.  AWS CLI를 사용하여 빌드 프로젝트를 생성하려면 JSON 형식의 입력이 필요합니다.

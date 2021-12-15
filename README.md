@@ -44,6 +44,7 @@ Amazon CloudWatch Events
 각 사용자별 Region 확인
 - North Virginia US-EAST-1
 - Oregon US-WEST-2
+<img src="https://raw.githubusercontent.com/lormadus/aws-devops-essential/master/img/vpc.png">
 
 실습에서 원하는 지역을 선택하십시오. 4 개의 Code * 서비스와 Cloud9 서비스가 모두있는 지역을 선택하십시오. [지역 서비스 목록] (https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services) 을 찾을 수 있습니다. 실습시에는 동일한 지역에서 진행합니다.. 
 **해당 지역의 VPC 또는 인터넷 게이트웨이 제한에 도달하지 않았는지 확인하십시오. 5 개의 VPC / IGW가 이미있는 경우 계속 진행하거나 대체 지역을 선택하기 전에 하나 이상을 삭제하십시오..** 

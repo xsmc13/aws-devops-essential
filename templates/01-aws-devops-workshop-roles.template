@@ -257,7 +257,7 @@
       "Type": "AWS::S3::Bucket",
       "DeletionPolicy":"Retain",
       "Properties": {
-        "BucketName" : { "Fn::Join" : ["", [ "user30-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"} ]] },
+        "BucketName" : { "Fn::Join" : ["", [ "user**-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"} ]] },
         "VersioningConfiguration" : {
           "Status" : "Enabled"
         },

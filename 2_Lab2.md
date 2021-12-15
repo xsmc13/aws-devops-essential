@@ -6,8 +6,8 @@
 1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:   (Terraform 으로 인프라를 구성한 경우 아래 작업 불필요)
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name DevopsWorkshop-Env \
---template-body https://s3.amazonaws.com/devops-workshop-0526-2051/v1/02-aws-devops-workshop-environment-setup.template \
+user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user30-DevopsWorkshop-Env \
+--template-body https://raw.githubusercontent.com/lormadus/aws-devops-essential/master/templates/02-aws-devops-workshop-environment-setup.template \
 --capabilities CAPABILITY_IAM
 ```
 

@@ -93,7 +93,7 @@ $git config --global credential.helper "aws codecommit credential-helper$@"
 1. IDE 터미널에서 다음 명령을 실행하여 샘플 소스코드를 다운로드하십시오..
 
 ```console
-user:~/environment $wget https://github.com/lormadus/aws-devops-essential/blob/master/sample-app/Web-App-Archive.zip?raw=true
+user:~/environment $wget https://github.com/lormadus/aws-devops-essential/raw/master/sample-app/Web-App-Archive.zip
 ```
 
 2. 압축파일을 해제하고 Web-App-Archive 폴더 아래 파일을 모두 WebAppRepo로 이동시킵니다.

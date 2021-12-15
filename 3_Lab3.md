@@ -13,11 +13,11 @@
 
 2. **CodePipeline Home** 페이지에서 **Create pipeline** 을 클릭합니다.
 
-3. **Step 1: Choose pipeline settings** 페이지의 **Pipeline name** 박스에서 이름을 **WebAppPipeline** 과 같이 입력합니다.
+3. **Step 1: Choose pipeline settings** 페이지의 **Pipeline name** 박스에서 이름을 **user**-WebAppPipeline** 과 같이 입력합니다.
 
-4. **Service role** 에서 **Existing service role** 선택 후 Role이름을 선택창에서 **DevopsWorkshop** 를 선택합니다.
+4. **Service role** 에서 **Existing service role** 선택 후 Role이름을 선택창에서 **user**-DevopsWorkshop** 를 선택합니다.
 
-5. **Artifact store** 에서 **Custom location** 을 선택합니다. S3 버킷을 선택창에서 **cicd-workshop** 를 선택 후 **Next step** 을 누릅니다.
+5. **Artifact store** 에서 **Custom location** 을 선택합니다. S3 버킷을 선택창에서 **user**-cicd-workshop** 를 선택 후 **Next step** 을 누릅니다.
 
 **_Note_**
 단일 AWS 계정 내에서 리전에서 생성한 각 파이프 라인의 이름은 고유해야합니다. 다른 지역의 파이프 라인에 이름을 재사용 할 수 있습니다.
@@ -56,7 +56,7 @@
 ```console
 user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeDeployRoleArn")|.OutputValue')
 
-user:~/environment $ aws deploy create-deployment-group --application-name DevOps-WebApp  \
+user:~/environment $ aws deploy create-deployment-group --application-name user30-DevOps-WebApp  \
 --deployment-config-name CodeDeployDefault.OneAtATime \
 --deployment-group-name DevOps-WebApp-ProdGroup \
 --ec2-tag-filters Key=Name,Value=ProdWebApp01,Type=KEY_AND_VALUE \

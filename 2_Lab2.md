@@ -4,9 +4,10 @@
 ### Stage 1: 테스트를 위한 환경 설정
 
 1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:   (Terraform 으로 인프라를 구성한 경우 아래 작업 불필요)
+   스택이름과 템플릭 주소 수정 (템플릿에서 DevWebApp01, ProdWebApp01 도 각자 IAM 이름으로 수정 , 예) user30-DevWebApp01, user30-ProdWebApp01)
 
 ```console
-user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user30-DevopsWorkshop-Env \
+user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user**-DevopsWorkshop-Env \
 --template-body https://raw.githubusercontent.com/lormadus/aws-devops-essential/master/templates/02-aws-devops-workshop-environment-setup.template \
 --capabilities CAPABILITY_IAM
 ```

@@ -301,7 +301,7 @@
           }
         },
         "Tags" : [
-          {"Key" : "Name", "Value" : "user30-DevWebApp01" }
+          {"Key" : "Name", "Value" : "user40-DevWebApp01" }
         ]
       }
     },
@@ -333,7 +333,7 @@
           }
         },
         "Tags" : [
-          {"Key" : "Name", "Value" : "user30-ProdWebApp01" }
+          {"Key" : "Name", "Value" : "user40-ProdWebApp01" }
         ]
       }
     }

@@ -272,11 +272,20 @@
         ]
       }
     },
+
+    "ImportedKeyPair": {
+        "Type": "AWS::EC2::KeyPair",
+        "Properties": {
+            "KeyName": "user30-key",
+            "PublicKeyMaterial": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOgXFAewwrk7cNlvZUUSEuFc6Eq2aDINaTMOQsrzK+RQikCflngYmR7vaRU+VgP2IiEGBbymoyxYvqUbNKxhPQi/IAAgkvVBYbjMHqQ7dCvDFbEemvjlCY5faSYIwXC5CDfbvyio4AqXmBxACf9TZGEZa4Nd2eJP4mI0l4EysYGKyHvcN/VsiGovovtcMR74grH6JDjewjtgj8gqYuf6rpPWhsbbctDZmqVe97UjTXY+K6bsKjNwPNm33wCOepxzPg5w5MyzR6j8HKbHKKKyPlsFW0q1d0AXALhNIuCqGt+x3/EjTCIghtVBpGEZIeZ+rLQvQ3ZviwUOFfCyb7x/Rf root@ip-172-31-42-143.ap-northeast-2.compute.internal"
+        }
+    },
     "DevWebApp01" : {
       "Type" : "AWS::EC2::Instance",
       "Properties": {
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionVirt2AMI", { "Ref" : "AWS::Region" }, {"Fn::FindInMap": ["AWSInstanceType2Virt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "Virt"]} ]},
         "InstanceType" : { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]},
+        "KeyName": { "Ref": "ImportedKeyPair" },
         "IamInstanceProfile" : {"Ref":"WebAppInstanceProfile"},
         "EbsOptimized" : {"Fn::FindInMap": ["AWSInstanceType2EBSOpt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "EBSOpt"]},
         "NetworkInterfaces" : [{
@@ -311,6 +320,7 @@
       "Properties": {
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionVirt2AMI", { "Ref" : "AWS::Region" }, {"Fn::FindInMap": ["AWSInstanceType2Virt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "Virt"]} ]},
         "InstanceType" : { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]},
+        "KeyName": { "Ref": "ImportedKeyPair" },
         "IamInstanceProfile" : {"Ref":"WebAppInstanceProfile"},
         "EbsOptimized" : {"Fn::FindInMap": ["AWSInstanceType2EBSOpt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "EBSOpt"]},
         "NetworkInterfaces" : [{

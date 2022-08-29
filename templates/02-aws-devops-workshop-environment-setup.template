@@ -232,8 +232,8 @@
                 "s3:List*"
               ],
               "Resource": [
-                { "Fn::Join" : ["", [ "arn:aws:s3:::cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"} ]] },
-                { "Fn::Join" : ["", [ "arn:aws:s3:::cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"}, "/*" ]] },
+                { "Fn::Join" : ["", [ "arn:aws:s3:::user30-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"} ]] },
+                { "Fn::Join" : ["", [ "arn:aws:s3:::user30-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"}, "/*" ]] },
                 { "Fn::Join" : ["", [ "arn:aws:s3:::codepipeline-", "*" ]] }
 
               ]

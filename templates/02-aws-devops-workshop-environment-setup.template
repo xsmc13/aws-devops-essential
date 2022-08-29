@@ -272,12 +272,18 @@
         ]
       }
     },
-
+    "NewKeyPair": {
+        "Type": "AWS::EC2::KeyPair",
+        "Properties": {
+            "KeyName": "user30-key"
+        }
+    },
     "DevWebApp01" : {
       "Type" : "AWS::EC2::Instance",
       "Properties": {
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionVirt2AMI", { "Ref" : "AWS::Region" }, {"Fn::FindInMap": ["AWSInstanceType2Virt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "Virt"]} ]},
         "InstanceType" : { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]},
+        "KeyName": { "Ref": "NewKeyPair" },
         "IamInstanceProfile" : {"Ref":"WebAppInstanceProfile"},
         "EbsOptimized" : {"Fn::FindInMap": ["AWSInstanceType2EBSOpt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "EBSOpt"]},
         "NetworkInterfaces" : [{
@@ -312,6 +318,7 @@
       "Properties": {
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionVirt2AMI", { "Ref" : "AWS::Region" }, {"Fn::FindInMap": ["AWSInstanceType2Virt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "Virt"]} ]},
         "InstanceType" : { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]},
+        "KeyName": { "Ref": "NewKeyPair" },
         "IamInstanceProfile" : {"Ref":"WebAppInstanceProfile"},
         "EbsOptimized" : {"Fn::FindInMap": ["AWSInstanceType2EBSOpt", { "Fn::FindInMap" : [ "instancesTypes", "Demo", "INST" ]}, "EBSOpt"]},
         "NetworkInterfaces" : [{

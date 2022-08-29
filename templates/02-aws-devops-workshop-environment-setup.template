@@ -292,8 +292,9 @@
                 "yum install -y aws-cli\n",
                 "yum install -y git\n",
                 "cd /home/ec2-user/\n",
-                "wget https://aws-codedeploy-",{ "Ref": "AWS::Region" },".s3.amazonaws.com/latest/codedeploy-agent.noarch.rpm\n",
-                "yum -y install codedeploy-agent.noarch.rpm\n",
+                "wget https://aws-codedeploy-ap-northeast-2.s3.ap-northeast-2.amazonaws.com/latest/install\n",
+                "chmod +x ./install\n",
+                "sudo ./install auto\n",
                 "service codedeploy-agent start\n",
                 "\n"
               ]
@@ -324,8 +325,9 @@
             "Fn::Join": [ "", [ "#!/bin/bash -ex\n",
                 "yum install -y aws-cli\n",
                 "cd /home/ec2-user/\n",
-                "wget https://aws-codedeploy-",{ "Ref": "AWS::Region" },".s3.amazonaws.com/latest/codedeploy-agent.noarch.rpm\n",
-                "yum -y install codedeploy-agent.noarch.rpm\n",
+               "wget https://aws-codedeploy-ap-northeast-2.s3.ap-northeast-2.amazonaws.com/latest/install\n",
+                "chmod +x ./install\n",
+                "sudo ./install auto\n",
                 "service codedeploy-agent start\n",
                 "\n"
               ]

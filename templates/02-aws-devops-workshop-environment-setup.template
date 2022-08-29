@@ -301,7 +301,7 @@
           }
         },
         "Tags" : [
-          {"Key" : "Name", "Value" : "user40-DevWebApp01" }
+          {"Key" : "Name", "Value" : "user30-DevWebApp01" }
         ]
       }
     },
@@ -333,7 +333,7 @@
           }
         },
         "Tags" : [
-          {"Key" : "Name", "Value" : "user40-ProdWebApp01" }
+          {"Key" : "Name", "Value" : "user30-ProdWebApp01" }
         ]
       }
     }
@@ -345,13 +345,13 @@
 
     "DevPublicDNS" : {
       "Value" : { "Fn::Join" : ["",["http://",{ "Fn::GetAtt" : [ "DevWebApp01", "PublicDnsName" ] }]]},
-      "Description" : "DevWebApp01 Public DNS Name"
+      "Description" : "user30-DevWebApp01 Public DNS Name"
     },
 
 
     "ProdPublicDNS" : {
       "Value" : { "Fn::Join" : ["",["http://",{ "Fn::GetAtt" : [ "ProdWebApp01", "PublicDnsName" ] }]]},
-      "Description" : "ProdWebApp01 Public DNS Name"
+      "Description" : "user30-ProdWebApp01 Public DNS Name"
     }
 
   }

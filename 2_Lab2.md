@@ -142,7 +142,7 @@ user:~/environment/WebAppRepo (master) $ aws codebuild start-build --project-nam
 3. S3 버킷에 업로드된 **WebAppOutputArtifact.zip** 파일의 **_eTag_** 를 확인하세요. etag는 S3 서비스에서 해당 파일을 클릭하면 확인할 수 있습니다. 혹은 아래 명령어로도 확인이 가능합니다.
 
 ```console
-user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-S3-OUTPUT-BUCKET-NAME: $(aws cloudformation describe-stacks --stack-name user**-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="S3BucketName")|.OutputValue')
 user:~/environment/WebAppRepo (master) $ aws s3api head-object --bucket <<REPLACE-YOUR-S3-OUTPUT-BUCKET-NAME>> \
 --key WebAppOutputArtifact.zip
 

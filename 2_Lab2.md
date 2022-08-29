@@ -9,7 +9,7 @@
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user**-DevopsWorkshop-Env \
---template-body https://raw.githubusercontent.com/lormadus/aws-devops-essential/master/templates/02-aws-devops-workshop-environment-setup.template \
+--template-body https://raw.githubusercontent.com/2mileslab/aws-devops-essential/master/templates/02-aws-devops-workshop-environment-setup.template \
 --capabilities CAPABILITY_IAM
 ```
 

@@ -159,7 +159,7 @@ Provide your Git HTTPs credential when prompted. Credential helper will store it
     01-aws-devops-workshop-roles.template  수정후에 아래와 같이 실행합니다.
 ```console
 user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user**-DevopsWorkshop-roles \
---template-body https://github.com/2mileslab/aws-devops-essential/blob/master/templates/01-aws-devops-workshop-roles.template \
+--template-body https://raw.githubusercontent.com/2mileslab/aws-devops-essential/master/templates/01-aws-devops-workshop-roles.template \
 --capabilities CAPABILITY_IAM
 ```
 

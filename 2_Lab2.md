@@ -39,7 +39,7 @@ user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cl
 user:~/environment/WebAppRepo (master) $ aws deploy create-deployment-group --application-name DevOps-WebApp \
 --deployment-config-name CodeDeployDefault.OneAtATime \
 --deployment-group-name DevOps-WebApp-BetaGroup \
---ec2-tag-filters Key=Name,Value=DevWebApp01,Type=KEY_AND_VALUE \
+--ec2-tag-filters Key=Name,Value=user**-DevWebApp01,Type=KEY_AND_VALUE \
 --service-role-arn <<REPLACE-WITH-YOUR-CODEDEPLOY-ROLE-ARN>>
 ```
 

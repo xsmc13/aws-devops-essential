@@ -5,6 +5,7 @@
 
 1. 다음 AWS CLI 명령을 사용하여 CloudFormation 스택을 실행하십시오:   (Terraform 으로 인프라를 구성한 경우 아래 작업 불필요)
    스택이름과 템플릭 주소 수정  (ProdWebApp01, DevWebApp01 TAG 정보 수정 => user30-ProdWebApp01, user30-DevWebApp01)
+   S3 버킷 이름 수정 (235,236 라인)
 
 ```console
 user:~/environment/WebAppRepo (master) $ aws cloudformation create-stack --stack-name user**-DevopsWorkshop-Env \

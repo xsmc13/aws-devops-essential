@@ -32,7 +32,7 @@ user:~/environment/WebAppRepo (master) $ aws deploy create-application --applica
 2. 다음을 실행하여 배포 그룹을 생성하고 지정된 그룹을 지정된 애플리케이션 및 사용자의 AWS 계정과 연결합니다. 서비스 롤은 CloudFormation으로 생성한 **DeployRoleArn 값** 으로 변경합니다.
 
 ```console
-user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cloudformation describe-stacks --stack-name DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeDeployRoleArn")|.OutputValue')
+user:~/environment/WebAppRepo (master) $ echo YOUR-CODEDEPLOY-ROLE-ARN: $(aws cloudformation describe-stacks --stack-name user**-DevopsWorkshop-roles | jq -r '.Stacks[0].Outputs[]|select(.OutputKey=="CodeDeployRoleArn")|.OutputValue')
 
 // 아래 --ec2-tag-filters 의 Name 키로 등록된 값에 배포가 된다. 즉 EC2 인스턴스 태그 Name의 값에 DevWebApp01 이라고 되어 있으며 해당 인스턴스에 배포가 된다.
 
